@@ -14,23 +14,25 @@ class PeterDState extends State<PeterD> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Text('Peter Diary'),
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
+      home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Peter Diary'),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () => Navigator.of(context).pop(),
             ),
-            body: Column(
-              children: [
-                Petercontent(),
-                Padding(
-                  padding: const EdgeInsets.only(left: 50.0),
-                  child: Peter(),
-                )
-              ],
-            )));
+          ),
+          body: Column(
+            children: [
+              Petercontent(),
+              Padding(
+                padding: const EdgeInsets.only(left: 50.0),
+                child: Peter(),
+              ),
+              Peterchat()
+            ],
+          )),
+    );
   }
 }
 
@@ -111,5 +113,42 @@ class PeterState extends State<Peter> {
         ),
       ],
     ));
+  }
+}
+
+class Peterchat extends StatefulWidget {
+  @override
+  PeterchatState createState() {
+    return PeterchatState();
+  }
+}
+
+class PeterchatState extends State<Peterchat> {
+  final TextEditingController _textController = new TextEditingController();
+
+  void _handleSubmitted(String text) {
+    _textController.clear();
+  }
+
+  Widget build(BuildContext context) {
+    return new IconTheme(
+        data: new IconThemeData(color: Theme.of(context).accentColor),
+        child: new Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: new Row(children: <Widget>[
+              new Flexible(
+                  child: new TextField(
+                controller: _textController,
+                onSubmitted: _handleSubmitted,
+                decoration:
+                    new InputDecoration.collapsed(hintText: 'send message'),
+              )),
+              new Container(
+                margin: new EdgeInsets.symmetric(horizontal: 2.0),
+                child: new IconButton(
+                    icon: new Icon(Icons.send),
+                    onPressed: () => _handleSubmitted(_textController.text)),
+              )
+            ])));
   }
 }
