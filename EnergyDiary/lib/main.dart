@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Peter.dart';
 // import 'package:mqtt_client/mqtt_client.dart';
 // import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -50,19 +51,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -96,9 +84,38 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 25.0, top: 70.0),
+              child: Text('3D Printers', style: TextStyle(fontSize: 20)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: list(),
+            ),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class list extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(children: [
+        Column(children: [
+          ElevatedButton(
+            child: Text('Peter, Prusa 1'),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PeterD();
+              }));
+            },
+          ),
+        ]),
+      ]),
     );
   }
 }
