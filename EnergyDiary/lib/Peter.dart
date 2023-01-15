@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'Peter2.dart';
 // import 'package:mqtt_client/mqtt_client.dart';
 // import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -29,7 +29,10 @@ class PeterDState extends State<PeterD> {
                 padding: const EdgeInsets.only(left: 50.0),
                 child: Peter(),
               ),
-              Peterchat()
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: list(),
+              ),
             ],
           )),
     );
@@ -116,39 +119,22 @@ class PeterState extends State<Peter> {
   }
 }
 
-class Peterchat extends StatefulWidget {
+class list extends StatelessWidget {
   @override
-  PeterchatState createState() {
-    return PeterchatState();
-  }
-}
-
-class PeterchatState extends State<Peterchat> {
-  final TextEditingController _textController = new TextEditingController();
-
-  void _handleSubmitted(String text) {
-    _textController.clear();
-  }
-
   Widget build(BuildContext context) {
-    return new IconTheme(
-        data: new IconThemeData(color: Theme.of(context).accentColor),
-        child: new Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: new Row(children: <Widget>[
-              new Flexible(
-                  child: new TextField(
-                controller: _textController,
-                onSubmitted: _handleSubmitted,
-                decoration:
-                    new InputDecoration.collapsed(hintText: 'send message'),
-              )),
-              new Container(
-                margin: new EdgeInsets.symmetric(horizontal: 2.0),
-                child: new IconButton(
-                    icon: new Icon(Icons.send),
-                    onPressed: () => _handleSubmitted(_textController.text)),
-              )
-            ])));
+    return Container(
+      child: Column(children: [
+        Column(children: [
+          ElevatedButton(
+            child: Text('Peter, Prusa 1'),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PeterC();
+              }));
+            },
+          ),
+        ]),
+      ]),
+    );
   }
 }
