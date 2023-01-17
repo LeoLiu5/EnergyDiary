@@ -94,6 +94,70 @@ class list extends StatelessWidget {
   }
 }
 
+class User {
+  String TotalStartTime;
+  double Total;
+  double Yesterday;
+  double Today;
+  int Period;
+  int Power;
+  int ApparentPower;
+  int ReactivePower;
+  double Factor;
+  int Voltage;
+  double Current;
+
+  User(
+      this.TotalStartTime,
+      this.Total,
+      this.Yesterday,
+      this.Today,
+      this.Period,
+      this.Power,
+      this.ApparentPower,
+      this.ReactivePower,
+      this.Factor,
+      this.Voltage,
+      this.Current);
+
+  factory User.fromJson(dynamic json) {
+    return User(
+        json['TotalStartTime'] as String,
+        json['Total'] as double,
+        json['Yesterday'] as double,
+        json['Today'] as double,
+        json['Period'] as int,
+        json['Power'] as int,
+        json['ApparentPower'] as int,
+        json['ReactivePower'] as int,
+        json['Factor'] as double,
+        json['Voltage'] as int,
+        json['Current'] as double);
+  }
+
+  @override
+  String toString() {
+    return '{ ${this.TotalStartTime}, ${this.Yesterday}, ${this.Today}, ${this.Period}, ${this.Power}, ${this.ApparentPower}, ${this.ReactivePower}, ${this.Factor}, ${this.Voltage}, ${this.Current} }';
+  }
+}
+
+class Tutorial {
+  String Time;
+
+  User ENERGY;
+
+  Tutorial(this.Time, this.ENERGY);
+
+  factory Tutorial.fromJson(dynamic json) {
+    return Tutorial(json['Time'] as String, User.fromJson(json['ENERGY']));
+  }
+
+  @override
+  String toString() {
+    return '{ ${this.Time}, ${this.ENERGY}}';
+  }
+}
+
 class Peter extends StatefulWidget {
   @override
   PeterState createState() {
@@ -105,6 +169,8 @@ class PeterState extends State<Peter> {
   String? Yesterday;
   String? Today;
   String? Power;
+  String? Total;
+  String? Time;
   final client = MqttServerClient('mqtt.cetools.org', 'mandymadongyiaka');
 
   @override
@@ -114,6 +180,8 @@ class PeterState extends State<Peter> {
     Yesterday = "connecting.....";
     Today = "connecting.....";
     Power = "connecting.....";
+    Total = "connecting.....";
+    Time = "connecting.....";
     startMQTT();
   }
 
@@ -130,6 +198,16 @@ class PeterState extends State<Peter> {
         child: Column(
       children: [
         Text(
+          'Total energy used: $Total',
+          textAlign: TextAlign.left,
+          style: TextStyle(fontSize: 20),
+        ),
+        Text(
+          'since $Time',
+          textAlign: TextAlign.left,
+          style: TextStyle(fontSize: 20),
+        ),
+        Text(
           'Yesterday energy used: $Yesterday',
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 20),
@@ -140,7 +218,7 @@ class PeterState extends State<Peter> {
           style: TextStyle(fontSize: 20),
         ),
         Text(
-          'Current Power: $Power',
+          'Current power usage: $Power',
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 20),
         ),
@@ -148,17 +226,15 @@ class PeterState extends State<Peter> {
     ));
   }
 
-  updateList(String s, int i) {
+  updateList(String y, String t, String T, String Ti, String p) {
     setState(() {
-      if (i == 1) {
-        Yesterday = s;
-      }
-      if (i == 1) {
-        Today = s;
-      }
-      if (i == 1) {
-        Power = s;
-      }
+      Yesterday = y;
+
+      Today = t;
+
+      Total = T;
+      Time = Ti;
+      Power = p;
     });
   }
 
@@ -188,16 +264,19 @@ class PeterState extends State<Peter> {
       final receivedMessage = c![0].payload as MqttPublishMessage;
       final messageString = MqttPublishPayload.bytesToStringAsString(
           receivedMessage.payload.message);
-      Map<String, dynamic> data = json.decode(messageString);
-      print('Data from JSON: ${data['message']}');
+      Tutorial tutorial = Tutorial.fromJson(jsonDecode(messageString));
 
       print(
-          'Change notification:: topic is <${c[0].topic}>, payload is <-- $messageString -->');
+          'Change notification:: topic is <${c[0].topic}>, payload is <-- $tutorial -->');
 
       if (c[0].topic == topic1) {
-        updateList(messageString, 1);
+        updateList(
+            tutorial.ENERGY.Yesterday.toString(),
+            tutorial.ENERGY.Today.toString(),
+            tutorial.ENERGY.Total.toString(),
+            tutorial.ENERGY.TotalStartTime.toString(),
+            tutorial.ENERGY.Power.toString());
       }
     });
-    print('subscribed');
   }
 }
