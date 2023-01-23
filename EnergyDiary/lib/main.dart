@@ -2,120 +2,136 @@ import 'package:flutter/material.dart';
 import 'Peter.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
+import 'app_theme.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
+import 'home_screen.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:convert';
 
-void main() {
-  runApp(const MyApp());
+const String username = 'student';
+const String password = 'ce2021-mqtt-forget-whale';
+
+final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
+double? Today;
+String? TotalStartTime;
+double? Yesterday;
+double? Total;
+int? Power;
+int? ApparentPower;
+int? ReactivePower;
+
+int? Voltage;
+double? Current;
+
+int? Period;
+double? Factor;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]).then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness:
+          !kIsWeb && Platform.isAndroid ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
     return MaterialApp(
       title: 'Energy Diary',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
+        textTheme: AppTheme.textTheme,
+        platform: TargetPlatform.iOS,
       ),
-      home: const MyHomePage(title: 'Energy Diary'),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class HexColor extends Color {
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 25.0, top: 70.0),
-              child: Text('3D Printers', style: TextStyle(fontSize: 20)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: list(),
-            ),
-          ],
-        ),
-      ),
-    );
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF' + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
   }
 }
 
-class list extends StatelessWidget {
+class User {
+  String TotalStartTime;
+  double Total;
+  double Yesterday;
+  double Today;
+  int Period;
+  int Power;
+  int ApparentPower;
+  int ReactivePower;
+  double Factor;
+  int Voltage;
+  double Current;
+
+  User(
+      this.TotalStartTime,
+      this.Total,
+      this.Yesterday,
+      this.Today,
+      this.Period,
+      this.Power,
+      this.ApparentPower,
+      this.ReactivePower,
+      this.Factor,
+      this.Voltage,
+      this.Current);
+
+  factory User.fromJson(dynamic json) {
+    return User(
+        json['TotalStartTime'] as String,
+        json['Total'] as double,
+        json['Yesterday'] as double,
+        json['Today'] as double,
+        json['Period'] as int,
+        json['Power'] as int,
+        json['ApparentPower'] as int,
+        json['ReactivePower'] as int,
+        json['Factor'] as double,
+        json['Voltage'] as int,
+        json['Current'] as double);
+  }
+
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Column(children: [
-          ElevatedButton(
-            child: Text('Peter, Prusa 1'),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return PeterD();
-              }));
-            },
-          ),
-        ]),
-      ]),
-    );
+  String toString() {
+    return '{ ${this.TotalStartTime}, ${this.Total},${this.Yesterday}, ${this.Today}, ${this.Period}, ${this.Power}, ${this.ApparentPower}, ${this.ReactivePower}, ${this.Factor}, ${this.Voltage}, ${this.Current} }';
+  }
+}
+
+class Tutorial {
+  String Time;
+
+  User ENERGY;
+
+  Tutorial(this.Time, this.ENERGY);
+
+  factory Tutorial.fromJson(dynamic json) {
+    return Tutorial(json['Time'] as String, User.fromJson(json['ENERGY']));
+  }
+
+  @override
+  String toString() {
+    return '{ ${this.Time}, ${this.ENERGY}}';
   }
 }
