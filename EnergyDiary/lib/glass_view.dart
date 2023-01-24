@@ -37,7 +37,7 @@ class GlassView extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 68, bottom: 12, right: 16, top: 12),
                           child: Text(
-                            'Energy',
+                            'Energy Diary',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: AppTheme.fontName,
