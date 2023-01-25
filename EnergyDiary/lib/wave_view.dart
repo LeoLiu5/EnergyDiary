@@ -2,11 +2,12 @@ import 'dart:math' as math;
 import 'app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as vector;
+import 'main.dart';
 
 class WaveView extends StatefulWidget {
-  final int percentageValue;
+  final double percentageValue;
 
-  const WaveView({Key? key, this.percentageValue = 253}) : super(key: key);
+  const WaveView({Key? key, this.percentageValue = 50}) : super(key: key);
   @override
   _WaveViewState createState() => _WaveViewState();
 }
@@ -147,7 +148,7 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
                     Padding(
                       padding: const EdgeInsets.only(top: 3.0),
                       child: Text(
-                        'V',
+                        '%',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: AppTheme.fontName,

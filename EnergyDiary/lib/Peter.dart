@@ -1094,7 +1094,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                       ],
                     ),
                     child: WaveView(
-                      percentageValue: 120,
+                      percentageValue: Voltage! / 253 * 100,
                     ),
                   ),
                 )
