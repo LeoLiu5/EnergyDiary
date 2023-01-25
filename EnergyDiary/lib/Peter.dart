@@ -23,14 +23,11 @@ class PeterD extends StatefulWidget {
 class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
-  List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
 
   @override
   void initState() {
-    addAllListData();
-
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
         if (topBarOpacity != 1.0) {
@@ -124,41 +121,8 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  void addAllListData() {
-    listViews.add(
-      TitleView(
-        titleTxt: 'Prusa MMU2S Multi-Filament Printer 1',
-      ),
-    );
-    listViews.add(
-      Printer1(),
-    );
-
-    listViews.add(
-      TitleView(
-        titleTxt: 'Energy Usage',
-      ),
-    );
-
-    listViews.add(
-      Energyoverall(),
-    );
-    listViews.add(
-      TitleView(
-        titleTxt: 'Electricity',
-      ),
-    );
-
-    listViews.add(
-      Energylimit(),
-    );
-    listViews.add(
-      GlassView(),
-    );
-  }
-
   Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 1500));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 5000));
     return true;
   }
 
@@ -198,7 +162,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                   titleTxt: 'Electricity',
                 )),
             Padding(
-                padding: const EdgeInsets.only(top: 600, bottom: 70),
+                padding: const EdgeInsets.only(top: 603, bottom: 83),
                 child: Energylimit()),
             Padding(
                 padding: const EdgeInsets.only(top: 840, bottom: 10, left: 100),
@@ -210,30 +174,6 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
           ],
         ),
       ),
-    );
-  }
-
-  Widget getMainListViewUI() {
-    // return FutureBuilder<bool>(
-    //   future: getData(),
-    //   builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-    //     if (!snapshot.hasData) {
-    //       return const SizedBox();
-    //     } else {
-    return ListView.builder(
-      controller: scrollController,
-      padding: EdgeInsets.only(
-        top: AppBar().preferredSize.height +
-            MediaQuery.of(context).padding.top +
-            24,
-        bottom: 62 + MediaQuery.of(context).padding.bottom,
-      ),
-      itemCount: listViews.length,
-      scrollDirection: Axis.vertical,
-      itemBuilder: (BuildContext context, int index) {
-        widget.animationController?.forward();
-        return listViews[index];
-      },
     );
   }
 
@@ -507,7 +447,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              left: 8, bottom: 3),
+                                              left: 4, bottom: 3),
                                           child: Text(
                                             '$ReactivePower VAR',
                                             textAlign: TextAlign.center,
@@ -706,7 +646,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 4.0),
                                   child: Text(
-                                    'Since $TotalStartTime',
+                                    'Since ${TotalStartTime!.substring(0, 10)}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontName,
@@ -822,7 +762,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                '20%',
+                                '${((Yesterday! - Today!) / Today! * 100).toInt()} %',
                                 style: TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
@@ -834,7 +774,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                               Padding(
                                 padding: const EdgeInsets.only(top: 6),
                                 child: Text(
-                                  'Difference',
+                                  'Change',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
@@ -928,10 +868,13 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                left: 4, top: 2, bottom: 14),
+                              left: 15,
+                              top: 4,
+                              bottom: 14,
+                            ),
                             child: Text(
                               'Voltage, the energy per unit charge in volts.',
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -956,7 +899,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 16),
+                        padding: const EdgeInsets.only(top: 5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -990,7 +933,8 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 4),
+                              padding:
+                                  const EdgeInsets.only(top: 13, right: 17),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,

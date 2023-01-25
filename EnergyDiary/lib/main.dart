@@ -14,15 +14,15 @@ const String username = '';
 const String password = '';
 
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
-double? Today;
-String? TotalStartTime;
-double? Yesterday;
+double Today = 1.0;
+String TotalStartTime = '2022-11-16';
+double Yesterday = 1.0;
 double? Total;
 int? Power;
 int? ApparentPower;
 int? ReactivePower;
 
-int? Voltage;
+int Voltage = 236;
 
 double? Current;
 int? Period;
