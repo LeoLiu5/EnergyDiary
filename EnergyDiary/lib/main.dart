@@ -11,7 +11,7 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 const String username = '';
-const String password = '';
+const String password = ' ';
 
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
 double Today = 1.0;
