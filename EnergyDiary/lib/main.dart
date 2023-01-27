@@ -18,10 +18,10 @@ double Today = 1.0;
 String TotalStartTime = '2022-11-16';
 double Yesterday = 1.0;
 double? Total;
-int? Power;
+int Power = 0;
 int? ApparentPower;
 int? ReactivePower;
-
+String Time = '2022-11-16';
 int Voltage = 236;
 
 double? Current;

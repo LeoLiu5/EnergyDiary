@@ -54,9 +54,10 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
     startMQTT();
   }
 
-  updateList(double a, String i, double h, double g, int f, int e, int d, int c,
-      double b) {
+  updateList(String z, double a, String i, double h, double g, int f, int e,
+      int d, int c, double b) {
     setState(() {
+      Time = z;
       Today = a;
       TotalStartTime = i;
       Yesterday = h;
@@ -88,7 +89,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
           'ERROR Mosquitto client connection failed - disconnecting, state is ${client.connectionStatus!.state}');
       client.disconnect();
     }
-    const topic1 = 'UCL/OPS/107/EM/gosund/sally-big-screen-logi1/SENSOR';
+    const topic1 = 'UCL/OPS/107/EM/gosund/peter-the-prusa-1/SENSOR';
     client.subscribe(topic1, MqttQos.atMostOnce);
 
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
@@ -101,6 +102,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
             'Change notification:: topic is <${c[0].topic}>, payload is <-- $tutorial -->');
 
         updateList(
+            tutorial.Time,
             tutorial.ENERGY.Today,
             tutorial.ENERGY.TotalStartTime,
             tutorial.ENERGY.Yesterday,
@@ -255,7 +257,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                             ),
                           ),
                           Text(
-                            '15 May',
+                            '${Time!.substring(0, 10)}',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: AppTheme.fontName,
@@ -519,7 +521,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                                 AppTheme.nearlyDarkBlue,
                                 HexColor("#8A98E8"),
                                 HexColor("#8A98E8")
-                              ], angle: 140),
+                              ], angle: (36 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,
@@ -762,7 +764,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                '${((Yesterday! - Today!) / Today! * 100).toInt()} %',
+                                '${(Today! - Yesterday!).toDouble()} kWh',
                                 style: TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
@@ -868,7 +870,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                              left: 15,
+                              left: 20,
                               top: 4,
                               bottom: 14,
                             ),
