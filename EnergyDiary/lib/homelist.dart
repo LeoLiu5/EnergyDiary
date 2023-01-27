@@ -1,5 +1,6 @@
 import 'Peter.dart';
 import 'package:flutter/widgets.dart';
+import 'printer2.dart';
 
 class HomeList {
   HomeList({
@@ -15,10 +16,10 @@ class HomeList {
       imagePath: 'assets/introduction_animation/introduction_animation.png',
       navigateScreen: PeterD(),
     ),
-    // HomeList(
-    //   imagePath: ' ',
-    //   navigateScreen:  ,
-    // ),
+    HomeList(
+      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      navigateScreen: printer2(),
+    ),
     // HomeList(
     //   imagePath: ' ',
     //   navigateScreen:  ,
