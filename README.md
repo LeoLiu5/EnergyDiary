@@ -1,23 +1,42 @@
-# REPLACE WITH YOUR APP NAME
+# Energy Diary
 
-This is the Final assessment template for CASA0014 - Please use this template and edit the relevant sections to personalise.
-This section has a short introduction to what the application is
+Energy Diary connects to your local MQTT server and collects your energy usage and presents it to you in an easy-to-understand and interactive form. With this smart energy app, you can track down your electricity and energy consumption daily. This application also has the potential to help you reduce your carbon footprint by providing useful data on electricity and power usage.
 
-## Use this README File 
 
-Use this section to show us what your Mobile App is about.   Include a Screenshot to the App, link to the various frameworks you've used. Include your presentation video here that shows off your Mobile App.   Emojis are also fun to include 📱 😄
+## Features
 
-Look at some other Flutter Apps online and see how they use there README File.  Good examples are:
+- A welcome user interface
+  -	An overview menu
+    -	A deatail page: Prusa MMU2S Multi-Filament Printer 1
+    - A detail page: Prusa MMU2S Single-Filament Printer 2
+    - A detail page: Prusa MMU2S Single-Filament Printer 3
+    - A deatail page: Prusa MMU2S Multi-Filament Printer 4
+    - A detail page: Screen 1
+    - A detail page: Screen 2
+    - A detail page: Soldering station
+      - A "Power Consumption" section: Showing information on "Active Power (the power which is consumed or utilized in an AC circuit)", "Reactive Power (the power associated with Inductors and Capacitors of the circuit)", and "Apparent Power (The combination of Active Power and Reactive Power)"
+      - An "Energy Usage" section: Showing information on "Total Energy Consumption", "Today's Energy Consumption", "Yesterday’s Energy Consumption", and "Change in Energy Consumption"
+      - An "⚡️ Electricity" section: Showing information on "Voltage" and "Current"
+      
+      
+## Data Feed
 
-- https://github.com/miickel/flutter_particle_clock
-- https://github.com/Tarikul711/flutter-food-delivery-app-ui    
-- https://github.com/mohak1283/Instagram-Clone
+- [Three GOSUND Smart Plugs](https://www.amazon.co.uk/Google-Control-Monitoring-Function-Required/dp/B0983HNB7M/ref=asc_df_B0983HNB7M/?tag=googshopuk-21&linkCode=df0&hvadid=535047026873&hvpos=&hvnetw=g&hvrand=7351062071157182144&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9044962&hvtargid=pla-1393506937628&psc=1&th=1&psc=1) are implemented around the CE Lab. They are responsible for collecting the energy data and publishing them to the CE MQTT Server. 
+
+<img width="400" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/mqtt.png">
+
+- Then, the CE MQTT Server provides the energy data directly to Energy Diary.
+
+<img width="400" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/mqtt.png">
 
 
 ## Include A Section That Tells Developers How To Install The App
 
-Include a section that gives intructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
+Include a section that gives instructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
+
 
 ##  Contact Details
 
-Having Contact Details is also good as it shows people how to get in contact with you if they'd like to contribute to the app. 
+- <a href="www.linkedin.com/in/xiaochen-liu-60b056193"> <img width="50" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/download.png">
+
+- Email: liuxiaochen11@gmail.com
