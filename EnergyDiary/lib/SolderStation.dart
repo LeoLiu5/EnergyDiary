@@ -142,7 +142,7 @@ class _SolderStationState extends State<SolderStation>
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Solder Station',
+                  titleTxt: 'Soldering Station',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),
@@ -152,7 +152,7 @@ class _SolderStationState extends State<SolderStation>
                   top: 350,
                 ),
                 child: TitleView(
-                  titleTxt: 'Energy Usage',
+                  titleTxt: 'Energy Consumption',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 365, bottom: 340),

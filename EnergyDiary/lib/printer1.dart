@@ -151,7 +151,7 @@ class _printer1State extends State<printer1> with TickerProviderStateMixin {
                   top: 350,
                 ),
                 child: TitleView(
-                  titleTxt: 'Energy Usage',
+                  titleTxt: 'Energy Consumption',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 365, bottom: 340),

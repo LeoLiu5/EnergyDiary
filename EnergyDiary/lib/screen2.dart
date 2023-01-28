@@ -151,7 +151,7 @@ class _screen2State extends State<screen2> with TickerProviderStateMixin {
                   top: 350,
                 ),
                 child: TitleView(
-                  titleTxt: 'Energy Usage',
+                  titleTxt: 'Energy Consumption',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 365, bottom: 340),
