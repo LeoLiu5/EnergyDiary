@@ -2,6 +2,7 @@ import 'Peter.dart';
 import 'package:flutter/widgets.dart';
 import 'printer2.dart';
 import 'printer3.dart';
+import 'printer4.dart';
 
 class HomeList {
   HomeList({
@@ -25,9 +26,9 @@ class HomeList {
       imagePath: 'assets/introduction_animation/introduction_animation.png  ',
       navigateScreen: printer3(),
     ),
-    // HomeList(
-    //   imagePath: ' ',
-    //   navigateScreen:  ,
-    // ),
+    HomeList(
+      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      navigateScreen: printer4(),
+    ),
   ];
 }
