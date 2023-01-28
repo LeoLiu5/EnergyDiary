@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Peter.dart';
+import 'printer1.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 import 'app_theme.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:convert';
 import 'dart:math' as math;
 
-const String username = ' ';
+const String username = '';
 const String password = '';
 
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');

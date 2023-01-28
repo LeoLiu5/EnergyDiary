@@ -11,16 +11,16 @@ import 'title_view.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
-class printer4 extends StatefulWidget {
-  const printer4({Key? key, this.animationController}) : super(key: key);
+class screen1 extends StatefulWidget {
+  const screen1({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
 
   @override
-  _printer4State createState() => _printer4State();
+  _screen1State createState() => _screen1State();
 }
 
-class _printer4State extends State<printer4> with TickerProviderStateMixin {
+class _screen1State extends State<screen1> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
   final ScrollController scrollController = ScrollController();
@@ -89,7 +89,7 @@ class _printer4State extends State<printer4> with TickerProviderStateMixin {
           'ERROR Mosquitto client connection failed - disconnecting, state is ${client.connectionStatus!.state}');
       client.disconnect();
     }
-    const topic1 = 'UCL/OPS/107/EM/gosund/penelope-the-prusa-4/SENSOR';
+    const topic1 = 'UCL/OPS/107/EM/gosund/sally-big-screen-logi1/SENSOR';
     client.subscribe(topic1, MqttQos.atMostOnce);
 
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
@@ -141,7 +141,7 @@ class _printer4State extends State<printer4> with TickerProviderStateMixin {
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Prusa MMU2S Multi-Filament Printer 4',
+                  titleTxt: 'Screen 1',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),
@@ -521,7 +521,7 @@ class _printer4State extends State<printer4> with TickerProviderStateMixin {
                                 AppTheme.nearlyDarkBlue,
                                 HexColor("#8A98E8"),
                                 HexColor("#8A98E8")
-                              ], angle: (360 / 15 * Power).toDouble()),
+                              ], angle: ((360 / 15 * Power).toDouble())),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,

@@ -11,16 +11,16 @@ import 'title_view.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
-class printer4 extends StatefulWidget {
-  const printer4({Key? key, this.animationController}) : super(key: key);
+class screen2 extends StatefulWidget {
+  const screen2({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
 
   @override
-  _printer4State createState() => _printer4State();
+  _screen2State createState() => _screen2State();
 }
 
-class _printer4State extends State<printer4> with TickerProviderStateMixin {
+class _screen2State extends State<screen2> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
   final ScrollController scrollController = ScrollController();
@@ -89,7 +89,7 @@ class _printer4State extends State<printer4> with TickerProviderStateMixin {
           'ERROR Mosquitto client connection failed - disconnecting, state is ${client.connectionStatus!.state}');
       client.disconnect();
     }
-    const topic1 = 'UCL/OPS/107/EM/gosund/penelope-the-prusa-4/SENSOR';
+    const topic1 = 'UCL/OPS/107/EM/gosund/sammy-big-screen-2/SENSOR';
     client.subscribe(topic1, MqttQos.atMostOnce);
 
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
@@ -141,7 +141,7 @@ class _printer4State extends State<printer4> with TickerProviderStateMixin {
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Prusa MMU2S Multi-Filament Printer 4',
+                  titleTxt: 'Screen 2',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),

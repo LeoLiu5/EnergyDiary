@@ -11,16 +11,16 @@ import 'title_view.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
-class PeterD extends StatefulWidget {
-  const PeterD({Key? key, this.animationController}) : super(key: key);
+class printer1 extends StatefulWidget {
+  const printer1({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
 
   @override
-  _PeterDState createState() => _PeterDState();
+  _printer1State createState() => _printer1State();
 }
 
-class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
+class _printer1State extends State<printer1> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
   final ScrollController scrollController = ScrollController();
@@ -145,7 +145,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),
-                child: Printer1()),
+                child: powerview()),
             Padding(
                 padding: const EdgeInsets.only(
                   top: 350,
@@ -296,7 +296,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
     ]);
   }
 
-  Widget Printer1() {
+  Widget powerview() {
     return Container(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
       child: Container(
@@ -764,7 +764,7 @@ class _PeterDState extends State<PeterD> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                '${(Today! - Yesterday!).toDouble()} kWh',
+                                '${(Today! - Yesterday!).toStringAsFixed(3)} kWh',
                                 style: TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,

@@ -1,8 +1,10 @@
-import 'Peter.dart';
+import 'printer1.dart';
 import 'package:flutter/widgets.dart';
 import 'printer2.dart';
 import 'printer3.dart';
 import 'printer4.dart';
+import 'screen1.dart';
+import 'screen2.dart';
 
 class HomeList {
   HomeList({
@@ -16,7 +18,7 @@ class HomeList {
   static List<HomeList> homeList = [
     HomeList(
       imagePath: 'assets/introduction_animation/introduction_animation.png',
-      navigateScreen: PeterD(),
+      navigateScreen: printer1(),
     ),
     HomeList(
       imagePath: 'assets/introduction_animation/introduction_animation.png ',
@@ -29,6 +31,14 @@ class HomeList {
     HomeList(
       imagePath: 'assets/introduction_animation/introduction_animation.png ',
       navigateScreen: printer4(),
+    ),
+    HomeList(
+      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      navigateScreen: screen1(),
+    ),
+    HomeList(
+      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      navigateScreen: screen2(),
     ),
   ];
 }

@@ -145,7 +145,7 @@ class _printer2State extends State<printer2> with TickerProviderStateMixin {
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),
-                child: Printer1()),
+                child: powerview()),
             Padding(
                 padding: const EdgeInsets.only(
                   top: 350,
@@ -296,7 +296,7 @@ class _printer2State extends State<printer2> with TickerProviderStateMixin {
     ]);
   }
 
-  Widget Printer1() {
+  Widget powerview() {
     return Container(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
       child: Container(
@@ -764,7 +764,7 @@ class _printer2State extends State<printer2> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                '${(Today! - Yesterday!).toDouble()} kWh',
+                                '${(Today! - Yesterday!).toStringAsFixed(3)} kWh',
                                 style: TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
