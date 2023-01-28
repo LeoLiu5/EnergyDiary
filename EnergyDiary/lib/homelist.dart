@@ -5,6 +5,7 @@ import 'printer3.dart';
 import 'printer4.dart';
 import 'screen1.dart';
 import 'screen2.dart';
+import 'SolderStation.dart';
 
 class HomeList {
   HomeList({
@@ -39,6 +40,10 @@ class HomeList {
     HomeList(
       imagePath: 'assets/introduction_animation/introduction_animation.png ',
       navigateScreen: screen2(),
+    ),
+    HomeList(
+      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      navigateScreen: SolderStation(),
     ),
   ];
 }
