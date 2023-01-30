@@ -11,39 +11,48 @@ class HomeList {
   HomeList({
     this.navigateScreen,
     this.imagePath = '',
+    this.title = '',
   });
 
   Widget? navigateScreen;
   String imagePath;
+  String title;
 
   static List<HomeList> homeList = [
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png',
+      imagePath: 'assets/introduction_animation/Peter.jpeg',
       navigateScreen: printer1(),
+      title: 'Peter',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      imagePath: 'assets/introduction_animation/Pertuina.jpeg',
       navigateScreen: printer2(),
+      title: 'Pertuina',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png  ',
+      imagePath: 'assets/introduction_animation/Paul.jpeg',
       navigateScreen: printer3(),
+      title: 'Paul',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      imagePath: 'assets/introduction_animation/Penelope.jpeg',
       navigateScreen: printer4(),
+      title: 'Penelope',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      imagePath: 'assets/introduction_animation/Sally.jpeg',
       navigateScreen: screen1(),
+      title: 'Sally',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      imagePath: 'assets/introduction_animation/Sammy.jpeg',
       navigateScreen: screen2(),
+      title: 'Sammy',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/introduction_animation.png ',
+      imagePath: 'assets/introduction_animation/SolderingStation.jpeg',
       navigateScreen: SolderStation(),
+      title: 'Sandy',
     ),
   ];
 }
