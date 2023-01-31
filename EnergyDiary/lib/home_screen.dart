@@ -206,7 +206,7 @@ class HomeListView extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 300),
+                      padding: EdgeInsets.only(top: 30),
                       child: Text(
                         listData!.title,
                         textAlign: TextAlign.center,
