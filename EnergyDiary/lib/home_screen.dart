@@ -44,7 +44,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         future: getData(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           return Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).padding.top - 5),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,16 +116,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 4, left: 8),
+            padding: const EdgeInsets.only(left: 15),
             child: Container(
-              width: AppBar().preferredSize.height - 8,
-              height: AppBar().preferredSize.height - 8,
+              width: AppBar().preferredSize.height,
+              height: AppBar().preferredSize.height,
             ),
           ),
           Expanded(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 4),
+                padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   'Energy Diary',
                   style: TextStyle(
@@ -137,10 +138,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 2, right: 8),
+            padding: const EdgeInsets.only(top: 20, right: 15),
             child: Container(
-              width: AppBar().preferredSize.height - 8,
-              height: AppBar().preferredSize.height - 8,
+              width: AppBar().preferredSize.height,
+              height: AppBar().preferredSize.height,
               color: isLightMode ? Colors.white : AppTheme.nearlyBlack,
               child: Material(
                 color: Colors.transparent,
@@ -199,21 +200,21 @@ class HomeListView extends StatelessWidget {
                   children: <Widget>[
                     Positioned(
                       top: 0,
-                      bottom: 30,
+                      bottom: 35,
                       child: Image.asset(
                         listData!.imagePath,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 30),
+                      padding: EdgeInsets.only(top: 300),
                       child: Text(
                         listData!.title,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.w700,
-                          fontSize: 30,
+                          fontSize: 25,
                           letterSpacing: 1.2,
                           color: Color.fromARGB(255, 16, 16, 16),
                         ),
