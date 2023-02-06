@@ -6,23 +6,20 @@ The expected function of this smart energy app is to help the user track down th
 
 ## Features
 
-- A welcome user interface
-  -	An overview menu
-  -	  <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/HomePage.png">
-
-    - A detail page for Peter, Prusa MMU2S Multi-Filament Printer 1
-    - A detail page for Pertuina, Prusa MMU2S Single-Filament Printer 2
-    - A detail page for Paul, Prusa MMU2S Single-Filament Printer 3
-    - A detail page for Penelope, Prusa MMU2S Multi-Filament Printer 4
-    - A detail page for Sally, Samsung Screen 1
-    - A detail page for Sammy, Samsung Screen 2
-    - A detail page for Sandy, the Soldering Station
- 
-      - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/HomeDraft.png">
-      - A "Power Consumption" section: showing information on "Active Power (the power which is consumed or utilized in an AC circuit)", "Reactive Power (the power associated with Inductors and Capacitors of the circuit)", and "Apparent Power (the combination of Active Power and Reactive Power)"
-      - An "Energy Usage" section: showing information on "Total Energy Consumption", "Today's Energy Consumption", "Yesterday’s Energy Consumption", and "Change in Energy Consumption"
-      - An "⚡️ Electricity" section: showing information on "Voltage" and "Current"
-      - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/DataDraft.png">
+- A welcome user interface (an overview menu of the app)
+- <img width="300" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/HomePage.png"><img width="300" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/HomeDraft.png">
+  - A detail page for Peter, Prusa MMU2S Multi-Filament Printer 1
+  - A detail page for Pertuina, Prusa MMU2S Single-Filament Printer 2
+  - A detail page for Paul, Prusa MMU2S Single-Filament Printer 3
+  - A detail page for Penelope, Prusa MMU2S Multi-Filament Printer 4
+  - A detail page for Sally, Samsung Screen 1
+  - A detail page for Sammy, Samsung Screen 2
+  - A detail page for Sandy, the Soldering Station
+  - <img width="300" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/DataDraft.png">
+   - A "Power Consumption" section: showing information on "Active Power (the power which is consumed or utilized in an AC circuit)", "Reactive Power (the power associated with Inductors and Capacitors of the circuit)", and "Apparent Power (the combination of Active Power and Reactive Power)"
+   - An "Energy Usage" section: showing information on "Total Energy Consumption", "Today's Energy Consumption", "Yesterday’s Energy Consumption", and "Change in Energy Consumption"
+   - An "⚡️ Electricity" section: showing information on "Voltage" and "Current"
+      
       
 ## Data Feed
 
