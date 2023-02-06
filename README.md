@@ -1,6 +1,7 @@
-# Energy Diary
+# Energy Diary - Monitoring daily Energy Usage in CE Lab
 
-Energy Diary connects to your local MQTT server and collects your energy usage and presents it to you in an easy-to-understand and interactive form. With this smart energy app, you can track down your electricity and energy consumption daily. This application also has the potential to help you reduce your carbon footprint by providing useful data on electricity and power usage.
+Energy Diary can connect to your local MQTT server and collect your energy usage data. Compared to MQTT, Energy Diary will present everything in an easy-to-understand, attractive, and interactive form. 
+The expected function of this smart energy app is to help the user track down their daily electricity and energy consumption. This application also has the potential to help users reduce their carbon footprint by connecting electricity and power usage data to mobile devices.
 
 
 ## Features
