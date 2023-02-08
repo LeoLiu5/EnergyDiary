@@ -217,6 +217,12 @@ class HomeListView extends StatelessWidget {
                           fontSize: 25,
                           letterSpacing: 1.2,
                           color: Color.fromARGB(255, 16, 16, 16),
+                          background: Paint()
+                            ..color = Colors.white
+                            ..strokeWidth = 40
+                            ..strokeJoin = StrokeJoin.round
+                            ..strokeCap = StrokeCap.round
+                            ..style = PaintingStyle.stroke,
                         ),
                       ),
                     ),

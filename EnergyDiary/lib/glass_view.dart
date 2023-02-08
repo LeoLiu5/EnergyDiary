@@ -53,11 +53,11 @@ class GlassView extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: -12,
-                  left: 0,
+                  top: 15,
+                  left: 17,
                   child: SizedBox(
-                    width: 80,
-                    height: 80,
+                    width: 40,
+                    height: 40,
                     child: Image.asset("assets/app/glass.png"),
                   ),
                 )
