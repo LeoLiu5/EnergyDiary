@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           return Padding(
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).padding.top - 5),
+                EdgeInsets.only(top: MediaQuery.of(context).padding.top - 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +57,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     builder:
                         (BuildContext context, AsyncSnapshot<bool> snapshot) {
                       return GridView(
-                        padding: const EdgeInsets.only(left: 12, right: 12),
+                        padding: const EdgeInsets.only(
+                          left: 12,
+                          right: 12,
+                          bottom: 100,
+                        ),
                         physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         children: List<Widget>.generate(

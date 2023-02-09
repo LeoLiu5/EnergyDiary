@@ -50,7 +50,7 @@ class HomeList {
       title: 'Sammy',
     ),
     HomeList(
-      imagePath: 'assets/introduction_animation/SolderingStation.jpeg',
+      imagePath: 'assets/introduction_animation/Sandy.jpeg',
       navigateScreen: SolderStation(),
       title: 'Sandy',
     ),
