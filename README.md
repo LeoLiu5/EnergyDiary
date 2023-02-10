@@ -43,10 +43,11 @@ Used in converting material colors to hex colors.
   - [**mqtt_server_client**](https://github.com/shamblett/mqtt_client/blob/master/example/mqtt_server_client_autoreconnect.dart)  
   Used in connecting to the MQTT server and subscribing to the topics.
 
-- [**material library**](https://api.flutter.dev/flutter/material/material-library.html)  Implementing Material Design to Flutter widgets.
+- [**material library**](https://api.flutter.dev/flutter/material/material-library.html)  
+Implementing Material Design to Flutter widgets.
 
-- [**geocoding 2.0.4**](https://pub.dev/packages/geocoding)  
-Geocoding is the computational process by which a physical address is converted into geographic coordinates. This package provides geocoding and reverse geocoding features. 
+- [**services library**](https://api.flutter.dev/flutter/services/services-library.html)  
+Used in preventing device orientation changes and forcing portrait up and down, and changing the status bar colour to transparent. 
 
 
 ## Helpful Resources and Tutorials 
@@ -54,7 +55,8 @@ Geocoding is the computational process by which a physical address is converted 
 Below is a list of links to resources and tutorials that helped in the development of the app:
 - https://www.engineeringtoolbox.com/kva-reactive-d_886.html
 - https://fluttercentral.com/Articles/Post/1237/Waveclipper_using_ClipPath_in_Flutter
-
+- https://stackoverflow.com/questions/49418332/flutter-how-to-prevent-device-orientation-changes-and-force-portrait
+- https://stackoverflow.com/questions/52489458/how-to-change-status-bar-color-in-flutter
 
 ## Include A Section That Tells Developers How To Install The App
 
