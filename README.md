@@ -32,6 +32,30 @@ The expected function of this smart energy app is to help the user track down th
 <img width="400" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/mqtt.png">
 
 
+## Key Packages and Libraries Used
+- [**firebase_auth 3.3.17**](https://pub.dev/packages/firebase_auth)  
+Used for the purpose of authentication users, links with firebase within Google Cloud Platform
+
+- [**hexcolor 3.0.1**](https://pub.dev/packages/hexcolor)  
+Used in converting material colors to hex colors.
+
+- [**mqtt_client 9.7.4**](https://pub.dev/packages/mqtt_client)  
+  - [**mqtt_server_client**](https://github.com/shamblett/mqtt_client/blob/master/example/mqtt_server_client_autoreconnect.dart)  
+  Used in connecting to the MQTT server and subscribing to the topics.
+
+- [**material library**](https://api.flutter.dev/flutter/material/material-library.html)  Implementing Material Design to Flutter widgets.
+
+- [**geocoding 2.0.4**](https://pub.dev/packages/geocoding)  
+Geocoding is the computational process by which a physical address is converted into geographic coordinates. This package provides geocoding and reverse geocoding features. 
+
+
+## Helpful Resources and Tutorials 
+
+Below is a list of links to resources and tutorials that helped in the development of the app:
+- https://www.engineeringtoolbox.com/kva-reactive-d_886.html
+- https://fluttercentral.com/Articles/Post/1237/Waveclipper_using_ClipPath_in_Flutter
+
+
 ## Include A Section That Tells Developers How To Install The App
 
 Include a section that gives instructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
