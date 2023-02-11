@@ -7,7 +7,7 @@ import 'wave_view.dart';
 import 'glass_view.dart';
 
 import 'title_view.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
@@ -141,7 +141,7 @@ class _printer4State extends State<printer4> with TickerProviderStateMixin {
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Prusa MMU2S Multi-Filament Printer 4',
+                  titleTxt: 'Penelope, Prusa Multi-Filament Printer 4',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),

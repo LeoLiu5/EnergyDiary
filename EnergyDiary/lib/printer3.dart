@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:mqtt_client/mqtt_server_client.dart';
+
 import 'dart:convert';
 import 'wave_view.dart';
 import 'glass_view.dart';
 
 import 'title_view.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
@@ -141,7 +141,7 @@ class _printer3State extends State<printer3> with TickerProviderStateMixin {
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Prusa MMU2S Single-Filament Printer 3',
+                  titleTxt: 'Paul, Prusa Single-Filament Printer 3',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),

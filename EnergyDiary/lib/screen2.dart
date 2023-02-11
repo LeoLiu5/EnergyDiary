@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:mqtt_client/mqtt_server_client.dart';
+
 import 'dart:convert';
 import 'wave_view.dart';
 import 'glass_view.dart';
 
 import 'title_view.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
@@ -141,7 +141,7 @@ class _screen2State extends State<screen2> with TickerProviderStateMixin {
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Screen 2',
+                  titleTxt: 'Sammy, Samsung Screen 2',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),
@@ -521,7 +521,7 @@ class _screen2State extends State<screen2> with TickerProviderStateMixin {
                                 AppTheme.nearlyDarkBlue,
                                 HexColor("#8A98E8"),
                                 HexColor("#8A98E8")
-                              ], angle: (360 / 15 * Power).toDouble()),
+                              ], angle: (360 / 35 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:mqtt_client/mqtt_server_client.dart';
+
 import 'dart:convert';
 import 'wave_view.dart';
 import 'glass_view.dart';
@@ -141,7 +141,7 @@ class _printer1State extends State<printer1> with TickerProviderStateMixin {
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Prusa MMU2S Multi-Filament Printer 1',
+                  titleTxt: 'Peter, Prusa Multi-Filament Printer 1',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),
@@ -1040,7 +1040,7 @@ class _printer1State extends State<printer1> with TickerProviderStateMixin {
                       ],
                     ),
                     child: WaveView(
-                      percentageValue: Voltage! / 253 * 100,
+                      percentageValue: Voltage / 253 * 100,
                     ),
                   ),
                 )

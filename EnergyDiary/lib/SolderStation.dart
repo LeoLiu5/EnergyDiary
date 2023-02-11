@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:mqtt_client/mqtt_server_client.dart';
+
 import 'dart:convert';
 import 'wave_view.dart';
 import 'glass_view.dart';
 
 import 'title_view.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'app_theme.dart';
 import 'main.dart';
 
@@ -142,7 +142,7 @@ class _SolderStationState extends State<SolderStation>
                   top: 125,
                 ),
                 child: TitleView(
-                  titleTxt: 'Soldering Station',
+                  titleTxt: 'Sandy, Soldering Station',
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 140, bottom: 580),

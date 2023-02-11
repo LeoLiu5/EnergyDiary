@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'printer1.dart';
-import 'package:mqtt_client/mqtt_client.dart';
+// import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
-import 'app_theme.dart';
-import 'dart:io';
 import 'package:flutter/services.dart';
+import 'dart:io'
+    show
+        Platform; //Information about the environment in which the current program is running.
 import 'home_screen.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:convert';
+import 'package:flutter/foundation.dart' show kIsWeb; // running on the web!
 import 'dart:math' as math;
 
-const String username = '';
-const String password = '';
-
+const String username = 'student';
+const String password = 'ce2021-mqtt-forget-whale';
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
+
 double Today = 1.0;
 String TotalStartTime = '2022-11-16';
 double Yesterday = 1.0;
-double? Total;
+double Total = 1.0;
 int Power = 0;
-int? ApparentPower;
-int? ReactivePower;
+int ApparentPower = 0;
+int ReactivePower = 0;
 String Time = '2022-11-16';
 int Voltage = 236;
+double Current = 1.0;
+int Period = 0;
+double Factor = 1.0;
 
-double? Current;
-int? Period;
-double? Factor;
-
+//Prevent device orientation changes and force portrait up and down
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
@@ -36,6 +36,7 @@ Future<void> main() async {
   ]).then((_) => runApp(MyApp()));
 }
 
+//change the status bar colour to transparent
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -53,23 +54,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
       home: MyHomePage(),
     );
-  }
-}
-
-class HexColor extends Color {
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
-
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
   }
 }
 
@@ -122,7 +110,6 @@ class User {
 
 class Tutorial {
   final String Time;
-
   final User ENERGY;
 
   Tutorial(this.Time, this.ENERGY);
@@ -251,28 +238,4 @@ class CurvePainter extends CustomPainter {
     var redian = (math.pi / 180) * degree;
     return redian;
   }
-}
-
-class WaveClipper extends CustomClipper<Path> {
-  final double animation;
-
-  List<Offset> waveList1 = [];
-
-  WaveClipper(this.animation, this.waveList1);
-
-  @override
-  Path getClip(Size size) {
-    Path path = new Path();
-
-    path.addPolygon(waveList1, false);
-
-    path.lineTo(size.width, size.height);
-    path.lineTo(0.0, size.height);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(WaveClipper oldClipper) =>
-      animation != oldClipper.animation;
 }

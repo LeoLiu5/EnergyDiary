@@ -32,6 +32,7 @@ dependencies:
     flutter_rating_bar: ^4.0.1
     intl: ^0.17.0
     animations: ^2.0.3
+    hexcolor: ^3.0.1
 
 dev_dependencies:
     flutter_launcher_icons: "^0.11.0"
@@ -40,7 +41,7 @@ flutter_icons:
     android: "launcher_icon"
     ios: true
     image_path: "assets/icon.png"
-    min_sdk_android: 21 # android min sdk min:16, default 21
+    min_sdk_android: 16 # android min sdk min:16, default 21
     web:
         generate: true
         image_path: "assets/icon.png"
