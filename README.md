@@ -49,15 +49,36 @@ Implementing Material Design to Flutter widgets.
 - [**services library**](https://api.flutter.dev/flutter/services/services-library.html)  
 Used in preventing device orientation changes and forcing portrait up and down, and changing the status bar colour to transparent. 
 
+- [**foundation library**](https://api.flutter.dev/flutter/foundation/foundation-library.html)  
+Used in detecting if the app the app is running on the web.
+
+- [**dart:io library**](https://api.dart.dev/stable/2.19.2/dart-io/dart-io-library.html) 
+Providing information about the environment in which the current program is running.
+
+- [**dart:math library**](https://api.dart.dev/stable/2.19.2/dart-math/dart-math-library.html)  
+Providing mathematical constants and functions.
+
+- [**vector_math 2.1.4**](https://pub.dev/packages/vector_math)  
+Providing constant factor to convert angle from degrees to radians.
+
+- [**widgets library**](https://api.flutter.dev/flutter/widgets/widgets-library.html) 
+Providing the Flutter widgets framework.
+
+- [**dart:convert library**](https://api.dart.dev/stable/2.19.2/dart-convert/dart-convert-library.html) 
+Providing encoders and decoders for converting JSON data fetched from MQTT.
+
 
 ## Helpful Resources and Tutorials 
 
 Below is a list of links to resources and tutorials that helped in the development of the app:
 - https://www.engineeringtoolbox.com/kva-reactive-d_886.html
 - https://fluttercentral.com/Articles/Post/1237/Waveclipper_using_ClipPath_in_Flutter
+- https://medium.com/@dev.n/definitive-flutter-painting-guide-ab9f51202656
 - https://stackoverflow.com/questions/49418332/flutter-how-to-prevent-device-orientation-changes-and-force-portrait
 - https://stackoverflow.com/questions/52489458/how-to-change-status-bar-color-in-flutter
-
+- https://stackoverflow.com/questions/45924474/how-do-you-detect-the-host-platform-from-dart-code
+- https://www.kodeco.com/31284650-getting-started-with-staggered-animations-in-flutter
+- https://github.com/baoolong/WaveProgressBar/blob/master/lib/waveprogressbar_flutter.dart
 ## Include A Section That Tells Developers How To Install The App
 
 Include a section that gives instructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
