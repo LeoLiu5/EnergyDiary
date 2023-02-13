@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'printer1.dart';
+
 // import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:flutter/services.dart';
@@ -9,9 +9,10 @@ import 'dart:io'
 import 'home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb; // running on the web!
 import 'dart:math' as math;
+import 'package:screen_loader/screen_loader.dart';
 
-const String username = 'student';
-const String password = 'ce2021-mqtt-forget-whale';
+const String username = '';
+const String password = '';
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
 
 double Today = 1.0;
@@ -29,6 +30,13 @@ double Factor = 1.0;
 
 //Prevent device orientation changes and force portrait up and down
 Future<void> main() async {
+  //Global loading screen
+  configScreenLoader(
+    loader: AlertDialog(
+      title: Text('Connecting to MQTT...'),
+    ),
+    bgBlur: 20.0,
+  );
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,

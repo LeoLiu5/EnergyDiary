@@ -1,7 +1,6 @@
 import 'app_theme.dart';
 import 'package:flutter/material.dart';
 import 'homelist.dart';
-import 'title_view.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -22,10 +21,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.initState();
   }
 
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 500));
-    return true;
-  }
+  // Future<bool> getData() async {
+  //   await Future<dynamic>.delayed(const Duration(milliseconds: 500));
+  //   return true;
+  // }
 
   @override
   void dispose() {
@@ -40,9 +39,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor:
           isLightMode == true ? AppTheme.white : AppTheme.nearlyBlack,
-      body: FutureBuilder<bool>(
-        future: getData(),
-        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+      body: Builder(
+        builder: (BuildContext context) {
           return Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).padding.top - 10),
@@ -52,10 +50,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               children: <Widget>[
                 appBar(),
                 Expanded(
-                  child: FutureBuilder<bool>(
-                    future: getData(),
-                    builder:
-                        (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                  child: Builder(
+                    builder: (BuildContext context) {
                       return GridView(
                         padding: const EdgeInsets.only(
                           left: 12,

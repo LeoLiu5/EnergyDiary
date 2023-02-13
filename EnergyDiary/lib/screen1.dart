@@ -1,57 +1,26 @@
 import 'package:flutter/material.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'package:mqtt_client/mqtt_client.dart';
-
+import 'package:screen_loader/screen_loader.dart';
 import 'dart:convert';
 import 'wave_view.dart';
 import 'glass_view.dart';
 
 import 'title_view.dart';
-import 'package:hexcolor/hexcolor.dart';
+
 import 'app_theme.dart';
 import 'main.dart';
 
 class screen1 extends StatefulWidget {
-  const screen1({Key? key, this.animationController}) : super(key: key);
-
-  final AnimationController? animationController;
-
   @override
   _screen1State createState() => _screen1State();
 }
 
-class _screen1State extends State<screen1> with TickerProviderStateMixin {
-  Animation<double>? topBarAnimation;
-
-  final ScrollController scrollController = ScrollController();
-  double topBarOpacity = 0.0;
-
+class _screen1State extends State<screen1> with ScreenLoader {
   @override
   void initState() {
-    scrollController.addListener(() {
-      if (scrollController.offset >= 24) {
-        if (topBarOpacity != 1.0) {
-          setState(() {
-            topBarOpacity = 1.0;
-          });
-        }
-      } else if (scrollController.offset <= 24 &&
-          scrollController.offset >= 0) {
-        if (topBarOpacity != scrollController.offset / 24) {
-          setState(() {
-            topBarOpacity = scrollController.offset / 24;
-          });
-        }
-      } else if (scrollController.offset <= 0) {
-        if (topBarOpacity != 0.0) {
-          setState(() {
-            topBarOpacity = 0.0;
-          });
-        }
-      }
-    });
-    super.initState();
     startMQTT();
+    super.initState();
   }
 
   updateList(String z, double a, String i, double h, double g, int f, int e,
@@ -84,6 +53,8 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
     }
     if (client.connectionStatus!.state == MqttConnectionState.connected) {
       print('Mosquitto client connected');
+      //Showing the Loading screen while connecting to the MQTT server
+      startLoading();
     } else {
       print(
           'ERROR Mosquitto client connection failed - disconnecting, state is ${client.connectionStatus!.state}');
@@ -113,6 +84,7 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
             tutorial.ENERGY.Voltage,
             tutorial.ENERGY.Current);
       }
+      stopLoading();
     });
   }
 
@@ -123,174 +95,177 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 5000));
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppTheme.background,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.only(
-                  top: 125,
+    return loadableWidget(
+        child: Container(
+            color: AppTheme.background,
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: SingleChildScrollView(
+                child: Stack(
+                  children: <Widget>[
+                    Padding(
+                        padding: const EdgeInsets.only(
+                          top: 175,
+                        ),
+                        child: TitleView(
+                          titleTxt: 'Sally, Samsung Screen 1',
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 195),
+                        child: powerview()),
+                    Padding(
+                        padding: const EdgeInsets.only(
+                          top: 418,
+                        ),
+                        child: TitleView(
+                          titleTxt: 'Energy Consumption',
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 435),
+                        child: Energyoverall()),
+                    Padding(
+                        padding: const EdgeInsets.only(
+                          top: 662,
+                        ),
+                        child: TitleView(
+                          titleTxt: 'Electricity',
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 681),
+                        child: Energylimit()),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            top: 940,
+                            left: 0.23 * MediaQuery.of(context).size.width),
+                        child: GlassView()),
+                    getAppBarUI(),
+                    SizedBox(
+                      height: MediaQuery.of(context).padding.bottom,
+                    )
+                  ],
                 ),
-                child: TitleView(
-                  titleTxt: 'Sally, Samsung Screen 1',
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 140, bottom: 580),
-                child: powerview()),
-            Padding(
-                padding: const EdgeInsets.only(
-                  top: 350,
-                ),
-                child: TitleView(
-                  titleTxt: 'Energy Consumption',
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 365, bottom: 340),
-                child: Energyoverall()),
-            Padding(
-                padding: const EdgeInsets.only(
-                  top: 590,
-                ),
-                child: TitleView(
-                  titleTxt: 'Electricity',
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 603, bottom: 83),
-                child: Energylimit()),
-            Padding(
-                padding: const EdgeInsets.only(top: 840, bottom: 10, left: 100),
-                child: GlassView()),
-            getAppBarUI(),
-            SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
-            )
-          ],
-        ),
-      ),
-    );
+              ),
+              // The Refresh floating button
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.endContained,
+              floatingActionButton: FloatingActionButton(
+                focusColor: Colors.green,
+                tooltip: 'Refresh this Page',
+                autofocus: true,
+                onPressed: startMQTT,
+                child: Icon(Icons.refresh),
+              ),
+            )));
   }
 
   Widget getAppBarUI() {
     return Column(children: <Widget>[
-      Expanded(
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppTheme.white.withOpacity(topBarOpacity),
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(32.0),
-            ),
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  color: AppTheme.grey.withOpacity(0.4 * topBarOpacity),
-                  offset: const Offset(1.1, 1.1),
-                  blurRadius: 10.0),
-            ],
+      Container(
+        decoration: BoxDecoration(
+          color: AppTheme.white,
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(32.0),
           ),
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).padding.top,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 5 - 8.0 * topBarOpacity,
-                    bottom: 12 - 8.0 * topBarOpacity),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'My Diary',
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: AppTheme.grey.withOpacity(0.5),
+                offset: const Offset(1.1, 1.1),
+                blurRadius: 10.0),
+          ],
+        ),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: MediaQuery.of(context).padding.top,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 16, right: 16, top: 5, bottom: 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Energy Diary',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 28,
+                          letterSpacing: 1.2,
+                          color: AppTheme.darkerText,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 38,
+                    width: 38,
+                    child: InkWell(
+                      highlightColor: Colors.transparent,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(32.0)),
+                      onTap: () {},
+                      child: Center(
+                        child: Icon(
+                          Icons.keyboard_arrow_left,
+                          color: AppTheme.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 8,
+                      right: 8,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Icon(
+                            Icons.calendar_today,
+                            color: AppTheme.grey,
+                            size: 18,
+                          ),
+                        ),
+                        Text(
+                          '${Time.substring(0, 10)}',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: AppTheme.fontName,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 22 + 6 - 6 * topBarOpacity,
-                            letterSpacing: 1.2,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            letterSpacing: -0.2,
                             color: AppTheme.darkerText,
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 38,
-                      width: 38,
-                      child: InkWell(
-                        highlightColor: Colors.transparent,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(32.0)),
-                        onTap: () {},
-                        child: Center(
-                          child: Icon(
-                            Icons.keyboard_arrow_left,
-                            color: AppTheme.grey,
-                          ),
+                  ),
+                  SizedBox(
+                    height: 38,
+                    width: 38,
+                    child: InkWell(
+                      highlightColor: Colors.transparent,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(32.0)),
+                      onTap: () {},
+                      child: Center(
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: AppTheme.grey,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 8,
-                        right: 8,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: Icon(
-                              Icons.calendar_today,
-                              color: AppTheme.grey,
-                              size: 18,
-                            ),
-                          ),
-                          Text(
-                            '${Time!.substring(0, 10)}',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: AppTheme.fontName,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 18,
-                              letterSpacing: -0.2,
-                              color: AppTheme.darkerText,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 38,
-                      width: 38,
-                      child: InkWell(
-                        highlightColor: Colors.transparent,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(32.0)),
-                        onTap: () {},
-                        child: Center(
-                          child: Icon(
-                            Icons.keyboard_arrow_right,
-                            color: AppTheme.grey,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     ]);
@@ -521,7 +496,7 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
                                 AppTheme.nearlyDarkBlue,
                                 HexColor("#8A98E8"),
                                 HexColor("#8A98E8")
-                              ], angle: ((360 / 35 * Power).toDouble())),
+                              ], angle: (36 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,
@@ -648,7 +623,7 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 4.0),
                                   child: Text(
-                                    'Since ${TotalStartTime!.substring(0, 10)}',
+                                    'Since ${TotalStartTime.substring(0, 10)}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: AppTheme.fontName,
@@ -764,7 +739,7 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                '${(Today! - Yesterday!).toStringAsFixed(3)} kWh',
+                                '${(Today - Yesterday).toStringAsFixed(3)} kWh',
                                 style: TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
@@ -1040,7 +1015,7 @@ class _screen1State extends State<screen1> with TickerProviderStateMixin {
                       ],
                     ),
                     child: WaveView(
-                      percentageValue: Voltage! / 253 * 100,
+                      percentageValue: Voltage / 253 * 100,
                     ),
                   ),
                 )
