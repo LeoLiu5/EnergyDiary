@@ -67,6 +67,9 @@ Providing the Flutter widgets framework.
 - [**dart:convert library**](https://api.dart.dev/stable/2.19.2/dart-convert/dart-convert-library.html) 
 Providing encoders and decoders for converting JSON data fetched from MQTT.
 
+- [**screen_loader 4.0.1**](https://pub.dev/packages/screen_loader) 
+Providing easy to use mixin ScreenLoader, which will handle the loading on the screen without using state or navigation stack. 
+
 
 ## Helpful Resources and Tutorials 
 
@@ -79,6 +82,9 @@ Below is a list of links to resources and tutorials that helped in the developme
 - https://stackoverflow.com/questions/45924474/how-do-you-detect-the-host-platform-from-dart-code
 - https://www.kodeco.com/31284650-getting-started-with-staggered-animations-in-flutter
 - https://github.com/baoolong/WaveProgressBar/blob/master/lib/waveprogressbar_flutter.dart
+- https://blog.logrocket.com/flutter-floatingactionbutton-a-complete-tutorial-with-examples/
+
+
 ## Include A Section That Tells Developers How To Install The App
 
 Include a section that gives instructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
