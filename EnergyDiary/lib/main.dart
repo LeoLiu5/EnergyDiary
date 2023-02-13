@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 // import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:flutter/services.dart';
@@ -11,8 +10,8 @@ import 'package:flutter/foundation.dart' show kIsWeb; // running on the web!
 import 'dart:math' as math;
 import 'package:screen_loader/screen_loader.dart';
 
-const String username = '';
-const String password = '';
+const String username = 'student';
+const String password = 'ce2021-mqtt-forget-whale';
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
 
 double Today = 1.0;

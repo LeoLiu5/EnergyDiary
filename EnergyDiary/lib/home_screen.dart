@@ -21,11 +21,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.initState();
   }
 
-  // Future<bool> getData() async {
-  //   await Future<dynamic>.delayed(const Duration(milliseconds: 500));
-  //   return true;
-  // }
-
   @override
   void dispose() {
     animationController?.dispose();
@@ -42,8 +37,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: Builder(
         builder: (BuildContext context) {
           return Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).padding.top - 10),
+            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 Expanded(
                   child: Builder(
                     builder: (BuildContext context) {
+                      //Display Pictures and titles for the 3d printers, TV screens, and soldering sattion in a grid view (two items in a row):
                       return GridView(
                         padding: const EdgeInsets.only(
                           left: 12,
@@ -76,7 +71,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             return HomeListView(
                               animation: animation,
                               animationController: animationController,
+                              //Pictures and titles from homelist.dart:
                               listData: homeList[index],
+                              //callBack function allows user to click on the images and moves to other pages:
                               callBack: () {
                                 Navigator.push<dynamic>(
                                   context,
@@ -89,11 +86,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             );
                           },
                         ),
+                        //GridView space formatting:
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: multiple ? 2 : 1,
-                          mainAxisSpacing: 30.0,
-                          crossAxisSpacing: 12,
-                          childAspectRatio: 0.6,
+                          crossAxisCount: multiple
+                              ? 2
+                              : 1, //The number of children in the cross axis.
+                          mainAxisSpacing:
+                              30.0, //The number of logical pixels between each child along the main axis.
+                          crossAxisSpacing:
+                              25, //The number of logical pixels between each child along the cross axis.
+                          childAspectRatio:
+                              0.6, //→ double The ratio of the cross-axis to the main-axis extent of each child.
                         ),
                       );
                     },
@@ -194,7 +197,7 @@ class HomeListView extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 1.5,
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(14.0)),
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: <Widget>[
@@ -207,7 +210,8 @@ class HomeListView extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 300),
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.3),
                       child: Text(
                         listData!.title,
                         textAlign: TextAlign.center,
@@ -226,6 +230,7 @@ class HomeListView extends StatelessWidget {
                         ),
                       ),
                     ),
+                    //Transparent inkwell allows user to click on the images and moves to other pages
                     Material(
                       color: Colors.transparent,
                       child: InkWell(

@@ -493,12 +493,18 @@ class _printer2State extends State<printer2> with ScreenLoader {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(4.0),
+                            //Adding the blue color gradient to represent the current active power value.
+
                             child: CustomPaint(
-                              painter: CurvePainter(colors: [
-                                AppTheme.nearlyDarkBlue,
-                                HexColor("#8A98E8"),
-                                HexColor("#8A98E8")
-                              ], angle: (36 * Power).toDouble()),
+                              painter: CurvePainter(
+                                  colors: [
+                                    AppTheme.nearlyDarkBlue,
+                                    HexColor("#8A98E8"),
+                                    HexColor("#8A98E8")
+                                  ],
+                                  //The maxmium active power is estimated as around 10 W. Tne responsive circle is 360 degree and is then divided into 10 portions (36 degrees each):
+
+                                  angle: (360 / 36 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,
