@@ -33,7 +33,7 @@ The expected function of this smart energy app is to help the user track down th
 
 
 ## Key Packages and Libraries Used
-- [**firebase_auth 3.3.17**](https://pub.dev/packages/firebase_auth)  
+- [**firebase_auth 4.2.6**](https://pub.dev/packages/firebase_auth)  
 Used for the purpose of authentication users, links with firebase within Google Cloud Platform
 
 - [**hexcolor 3.0.1**](https://pub.dev/packages/hexcolor)  
