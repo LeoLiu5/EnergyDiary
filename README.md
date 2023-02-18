@@ -36,6 +36,9 @@ The expected function of this smart energy app is to help the user track down th
 - [**firebase_auth 4.2.6**](https://pub.dev/packages/firebase_auth)  
 Used for the purpose of authentication users, links with firebase within Google Cloud Platform
 
+- [**firebase_core 2.6.1**](https://pub.dev/packages/firebase_core/example)  
+A Flutter plugin to use the Firebase Core API, which enables connecting to multiple Firebase apps
+
 - [**hexcolor 3.0.1**](https://pub.dev/packages/hexcolor)  
 Used in converting material colors to hex colors.
 
@@ -52,7 +55,7 @@ Used in preventing device orientation changes and forcing portrait up and down, 
 - [**foundation library**](https://api.flutter.dev/flutter/foundation/foundation-library.html)  
 Used in detecting if the app the app is running on the web.
 
-- [**dart:io library**](https://api.dart.dev/stable/2.19.2/dart-io/dart-io-library.html) 
+- [**dart:io library**](https://api.dart.dev/stable/2.19.2/dart-io/dart-io-library.html)  
 Providing information about the environment in which the current program is running.
 
 - [**dart:math library**](https://api.dart.dev/stable/2.19.2/dart-math/dart-math-library.html)  
@@ -61,13 +64,13 @@ Providing mathematical constants and functions.
 - [**vector_math 2.1.4**](https://pub.dev/packages/vector_math)  
 Providing constant factor to convert angle from degrees to radians.
 
-- [**widgets library**](https://api.flutter.dev/flutter/widgets/widgets-library.html) 
+- [**widgets library**](https://api.flutter.dev/flutter/widgets/widgets-library.html)  
 Providing the Flutter widgets framework.
 
-- [**dart:convert library**](https://api.dart.dev/stable/2.19.2/dart-convert/dart-convert-library.html) 
+- [**dart:convert library**](https://api.dart.dev/stable/2.19.2/dart-convert/dart-convert-library.html)  
 Providing encoders and decoders for converting JSON data fetched from MQTT.
 
-- [**screen_loader 4.0.1**](https://pub.dev/packages/screen_loader) 
+- [**screen_loader 4.0.1**](https://pub.dev/packages/screen_loader)  
 Providing easy to use mixin ScreenLoader, which will handle the loading on the screen without using state or navigation stack. 
 
 
@@ -83,6 +86,8 @@ Below is a list of links to resources and tutorials that helped in the developme
 - https://www.kodeco.com/31284650-getting-started-with-staggered-animations-in-flutter
 - https://github.com/baoolong/WaveProgressBar/blob/master/lib/waveprogressbar_flutter.dart
 - https://blog.logrocket.com/flutter-floatingactionbutton-a-complete-tutorial-with-examples/
+- https://medium.com/firebase-developers/dive-into-firebase-auth-on-flutter-email-and-link-sign-in-e51603eb08f8
+- https://medium.com/google-developer-experts/firebase-authentication-flutter-80e8f00338ac
 
 
 ## Include A Section That Tells Developers How To Install The App
