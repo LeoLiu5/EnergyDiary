@@ -5,10 +5,10 @@ packages:
     dependency: transitive
     description:
       name: _flutterfire_internals
-      sha256: "6607e2a4774a97751a5739ce6e63f948c6654d059eeed918dcf10eb58554db7f"
+      sha256: "953f097772b5fd095e0ee6eeeab34e3a42de91d5f43fa86b5de8485a57494f96"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.14"
+    version: "1.0.15"
   animations:
     dependency: "direct main"
     description:
@@ -141,10 +141,10 @@ packages:
     dependency: transitive
     description:
       name: firebase_auth_platform_interface
-      sha256: a3882743513d91f0ec17afaf93623f34222eb430f5730c87821628d965dc3025
+      sha256: "32d31705603b335b140a73bf8c933ee57ecec9f31f2d82b2371bb5ce714a6535"
       url: "https://pub.dev"
     source: hosted
-    version: "6.11.9"
+    version: "6.11.10"
   firebase_auth_web:
     dependency: transitive
     description:
@@ -157,10 +157,10 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_core
-      sha256: "8421b0d06b6a39fabd5937857250ab97b3de1e9b28aeb91fc5fc6ac6dce8b92f"
+      sha256: "46b80acfb472d8abc500c2cb6ce65c4b5237d825e4c23bfc3efc70df9eec1a6e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.6.0"
+    version: "2.6.1"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -173,10 +173,10 @@ packages:
     dependency: transitive
     description:
       name: firebase_core_web
-      sha256: "0684787baee0a65848fa3a3831f525b42832ab3850257bae7245be1ad4af8ca3"
+      sha256: "291fbcace608aca6c860652e1358ef89752be8cc3ef227f8bbcd1e62775b833a"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.2.1"
   flutter:
     dependency: "direct main"
     description: flutter
