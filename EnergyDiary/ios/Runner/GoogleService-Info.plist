@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>842250017294-melimcvo99mj67eq249rjg1jpi826bg1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.842250017294-melimcvo99mj67eq249rjg1jpi826bg1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>842250017294-tce629a0qha3c9amp5s4rn7fjrhu8f9p.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCr46hPGBaUGHC4bwu9PKFh7z0dt36kvYc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>842250017294</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>LeoLiu</string>
+	<key>PROJECT_ID</key>
+	<string>energy-diary-5df98</string>
+	<key>STORAGE_BUCKET</key>
+	<string>energy-diary-5df98.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:842250017294:ios:2dc7c16488fe064ec4fa5f</string>
+</dict>
+</plist>

@@ -12,6 +12,8 @@ import 'app_theme.dart';
 import 'main.dart';
 
 class SolderStation extends StatefulWidget {
+  const SolderStation({super.key});
+
   @override
   _SolderStationState createState() => _SolderStationState();
 }
@@ -105,8 +107,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
               body: SingleChildScrollView(
                 child: Stack(
                   children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.only(
+                    const Padding(
+                        padding: EdgeInsets.only(
                           top: 175,
                         ),
                         child: TitleView(
@@ -115,8 +117,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                     Padding(
                         padding: const EdgeInsets.only(top: 195),
                         child: powerview()),
-                    Padding(
-                        padding: const EdgeInsets.only(
+                    const Padding(
+                        padding: EdgeInsets.only(
                           top: 418,
                         ),
                         child: TitleView(
@@ -125,8 +127,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                     Padding(
                         padding: const EdgeInsets.only(top: 435),
                         child: Energyoverall()),
-                    Padding(
-                        padding: const EdgeInsets.only(
+                    const Padding(
+                        padding: EdgeInsets.only(
                           top: 662,
                         ),
                         child: TitleView(
@@ -155,7 +157,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                 tooltip: 'Refresh this Page',
                 autofocus: true,
                 onPressed: startMQTT,
-                child: Icon(Icons.refresh),
+                child: const Icon(Icons.refresh),
               ),
             )));
   }
@@ -181,13 +183,14 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
               height: MediaQuery.of(context).padding.top,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 16, right: 16, top: 5, bottom: 12),
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 5, bottom: 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Expanded(
+                  const Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Energy Diary',
                         textAlign: TextAlign.left,
@@ -209,7 +212,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(32.0)),
                       onTap: () {},
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.keyboard_arrow_left,
                           color: AppTheme.grey,
@@ -224,8 +227,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                     ),
                     child: Row(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 8),
                           child: Icon(
                             Icons.calendar_today,
                             color: AppTheme.grey,
@@ -235,7 +238,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                         Text(
                           '${Time.substring(0, 10)}',
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: AppTheme.fontName,
                             fontWeight: FontWeight.normal,
                             fontSize: 18,
@@ -254,7 +257,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(32.0)),
                       onTap: () {},
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.keyboard_arrow_right,
                           color: AppTheme.grey,
@@ -277,7 +280,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
       child: Container(
         decoration: BoxDecoration(
           color: AppTheme.white,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(8.0),
               bottomLeft: Radius.circular(8.0),
               bottomRight: Radius.circular(8.0),
@@ -285,7 +288,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
           boxShadow: <BoxShadow>[
             BoxShadow(
                 color: AppTheme.grey.withOpacity(0.2),
-                offset: Offset(1.1, 1.1),
+                offset: const Offset(1.1, 1.1),
                 blurRadius: 10.0),
           ],
         ),
@@ -307,8 +310,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 width: 2,
                                 decoration: BoxDecoration(
                                   color: HexColor('#87A0E5').withOpacity(0.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(4.0)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(4.0)),
                                 ),
                               ),
                               Padding(
@@ -344,8 +347,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                           child: Image.asset(
                                               "assets/app/eaten.png"),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
+                                        const Padding(
+                                          padding: EdgeInsets.only(
                                               left: 4, bottom: 3),
                                         ),
                                         Padding(
@@ -371,7 +374,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Row(
@@ -381,8 +384,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 width: 2,
                                 decoration: BoxDecoration(
                                   color: HexColor('#F56E98').withOpacity(0.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(4.0)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(4.0)),
                                 ),
                               ),
                               Padding(
@@ -418,8 +421,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                           child: Image.asset(
                                               "assets/app/burned.png"),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
+                                        const Padding(
+                                          padding: EdgeInsets.only(
                                               left: 4, bottom: 3),
                                         ),
                                         Padding(
@@ -462,7 +465,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                               height: 100,
                               decoration: BoxDecoration(
                                 color: AppTheme.white,
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(100.0),
                                 ),
                                 border: new Border.all(
@@ -497,7 +500,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 HexColor("#8A98E8"),
                                 HexColor("#8A98E8")
                               ], angle: (36 * Power).toDouble()),
-                              child: SizedBox(
+                              child: const SizedBox(
                                 width: 108,
                                 height: 108,
                               ),
@@ -515,7 +518,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                   const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 8),
               child: Container(
                 height: 2,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.background,
                   borderRadius: BorderRadius.all(Radius.circular(4.0)),
                 ),
@@ -535,7 +538,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
         child: Container(
           decoration: BoxDecoration(
             color: AppTheme.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(8.0),
                 bottomLeft: Radius.circular(8.0),
                 bottomRight: Radius.circular(8.0),
@@ -543,7 +546,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
             boxShadow: <BoxShadow>[
               BoxShadow(
                   color: AppTheme.grey.withOpacity(0.2),
-                  offset: Offset(1.1, 1.1),
+                  offset: const Offset(1.1, 1.1),
                   blurRadius: 10.0),
             ],
           ),
@@ -555,9 +558,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 4, bottom: 8, top: 16),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 4, bottom: 8, top: 16),
                       child: Text(
                         'Total',
                         textAlign: TextAlign.center,
@@ -583,7 +585,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                               child: Text(
                                 '$Total',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 32,
@@ -591,9 +593,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8, bottom: 8),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8, bottom: 8),
                               child: Text(
                                 'kWh',
                                 textAlign: TextAlign.center,
@@ -648,7 +649,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                     left: 24, right: 24, top: 8, bottom: 8),
                 child: Container(
                   height: 2,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: AppTheme.background,
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
@@ -667,7 +668,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                           Text(
                             '$Today kWh',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: AppTheme.fontName,
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
@@ -703,7 +704,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                               Text(
                                 '$Yesterday kWh',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
@@ -740,7 +741,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                             children: <Widget>[
                               Text(
                                 '${(Today - Yesterday).toStringAsFixed(3)} kWh',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
@@ -818,7 +819,7 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 child: Text(
                                   '$Voltage',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontFamily: AppTheme.fontName,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 32,
@@ -826,9 +827,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 8, bottom: 8),
                                 child: Text(
                                   'V',
                                   textAlign: TextAlign.center,
@@ -843,8 +843,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                               left: 20,
                               top: 4,
                               bottom: 14,
@@ -868,10 +868,10 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                             left: 4, right: 4, top: 8, bottom: 16),
                         child: Container(
                           height: 2,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: AppTheme.background,
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(4.0)),
+                                BorderRadius.all(Radius.circular(4.0)),
                           ),
                         ),
                       ),
@@ -960,8 +960,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 blurRadius: 8.0),
                           ],
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(6.0),
                           child: Icon(
                             Icons.battery_charging_full,
                             color: AppTheme.nearlyDarkBlue,
@@ -983,8 +983,8 @@ class _SolderStationState extends State<SolderStation> with ScreenLoader {
                                 blurRadius: 8.0),
                           ],
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(6.0),
                           child: Icon(
                             Icons.battery_full,
                             color: AppTheme.nearlyDarkBlue,

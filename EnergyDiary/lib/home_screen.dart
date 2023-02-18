@@ -1,6 +1,9 @@
 import 'app_theme.dart';
 import 'package:flutter/material.dart';
 import 'homelist.dart';
+import 'main.dart';
+// importing firebase libraries
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -102,6 +105,43 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     },
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 30, top: 20),
+                  child: Align(
+                    child: SizedBox(
+                      height: 35,
+                      width: 110,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            // 设置圆角
+                            shape: MaterialStateProperty.all(
+                                const StadiumBorder(
+                                    side:
+                                        BorderSide(style: BorderStyle.none)))),
+                        child: Text('Sign Out',
+                            style:
+                                Theme.of(context).primaryTextTheme.labelLarge),
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const loginPage(
+                                  title: "Log in"), // login page,
+                            ),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('You have successfully signed out!'),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           );
@@ -132,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 child: Text(
                   'Energy Diary',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 26,
                     color: isLightMode ? AppTheme.darkText : AppTheme.white,
                     fontWeight: FontWeight.w700,
                   ),
@@ -155,6 +195,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     multiple ? Icons.dashboard : Icons.view_agenda,
                     color: isLightMode ? AppTheme.dark_grey : AppTheme.white,
                   ),
+                  // Change GridView:
                   onTap: () {
                     setState(() {
                       multiple = !multiple;

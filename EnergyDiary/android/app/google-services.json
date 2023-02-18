@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "842250017294",
+    "project_id": "energy-diary-5df98",
+    "storage_bucket": "energy-diary-5df98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842250017294:android:c82cc3aa0b50bbb2c4fa5f",
+        "android_client_info": {
+          "package_name": "com.example.myfirstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842250017294-tce629a0qha3c9amp5s4rn7fjrhu8f9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myfirstapp",
+            "certificate_hash": "bf1efc8b084ba49601c94338139c2abc662c1b26"
+          }
+        },
+        {
+          "client_id": "842250017294-7g9el6cot94l82tmspon24vrslsvn4m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKW18-doBZvvFmHrqdLF1UQj1phPdxKsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842250017294-7g9el6cot94l82tmspon24vrslsvn4m3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "842250017294-melimcvo99mj67eq249rjg1jpi826bg1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "LeoLiu"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
