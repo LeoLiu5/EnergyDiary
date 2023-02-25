@@ -30,11 +30,11 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
       });
     waveAnimationController!.addListener(() {
       animList1.clear();
-      //The maximum length of the bottle is 60, wave moves from 0 to 60
+      //The maximum length of the bottle is 60 logical pixels, the wave moves from 0 to 60 logical pixels
       for (int i = bottleOffset1.dx.toInt(); i <= 60; i++) {
         animList1.add(
           new Offset(
-            //Length: From 0 to 60 horizontally
+            //Length: From 0 to 60 logical pixels horizontally
             i.toDouble() + bottleOffset1.dx.toInt(),
             //During the given duration: waveAnimationController!.value linearly
             //produces values that range from 0.0 to 1.0. The frequency of the
@@ -46,7 +46,7 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
                         vector.degrees2Radians) *
                     //Wave amplitude:
                     3 +
-//the equalibrium point, the maximum height of the bottle is 160
+//the equalibrium point and the maximum height of the bottle is 160 logical pixels
                 ((100 - widget.percentageValue) * 160 / 100),
           ),
         );

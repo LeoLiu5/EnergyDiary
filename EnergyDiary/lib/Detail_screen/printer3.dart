@@ -3,7 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:screen_loader/screen_loader.dart';
 import 'dart:convert';
-import 'wave_view.dart';
+import 'Capsule_wave_view.dart';
 import 'glass_view.dart';
 
 import '../mqtt receiver.dart';
@@ -15,6 +15,7 @@ class printer3 extends StatefulWidget {
   _printer3State createState() => _printer3State();
 }
 
+//"ScreenLoader" shows and hides the loader without updating the state of the widget which increases the performance
 class _printer3State extends State<printer3> with ScreenLoader {
   @override
   void initState() {
@@ -66,22 +67,22 @@ class _printer3State extends State<printer3> with ScreenLoader {
       final receivedMessage = c![0].payload as MqttPublishMessage;
       final messageString = MqttPublishPayload.bytesToStringAsString(
           receivedMessage.payload.message);
-      Tutorial tutorial = Tutorial.fromJson(jsonDecode(messageString));
+      Convert convert = Convert.fromJson(jsonDecode(messageString));
       if (c[0].topic == topic1) {
         print(
-            'Change notification:: topic is <${c[0].topic}>, payload is <-- $tutorial -->');
+            'Change notification:: topic is <${c[0].topic}>, payload is <-- $convert -->');
 
         updateList(
-            tutorial.Time,
-            tutorial.ENERGY.Today,
-            tutorial.ENERGY.TotalStartTime,
-            tutorial.ENERGY.Yesterday,
-            tutorial.ENERGY.Total,
-            tutorial.ENERGY.Power,
-            tutorial.ENERGY.ApparentPower,
-            tutorial.ENERGY.ReactivePower,
-            tutorial.ENERGY.Voltage,
-            tutorial.ENERGY.Current);
+            convert.Time,
+            convert.ENERGY.Today,
+            convert.ENERGY.TotalStartTime,
+            convert.ENERGY.Yesterday,
+            convert.ENERGY.Total,
+            convert.ENERGY.Power,
+            convert.ENERGY.ApparentPower,
+            convert.ENERGY.ReactivePower,
+            convert.ENERGY.Voltage,
+            convert.ENERGY.Current);
       }
       stopLoading();
     });
@@ -113,7 +114,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
                         )),
                     Padding(
                         padding: const EdgeInsets.only(top: 195),
-                        child: powerview()),
+                        child: PowerView()),
                     Padding(
                         padding: const EdgeInsets.only(
                           top: 418,
@@ -123,7 +124,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
                         )),
                     Padding(
                         padding: const EdgeInsets.only(top: 435),
-                        child: Energyoverall()),
+                        child: EnergyConsumption()),
                     Padding(
                         padding: const EdgeInsets.only(
                           top: 662,
@@ -133,12 +134,12 @@ class _printer3State extends State<printer3> with ScreenLoader {
                         )),
                     Padding(
                         padding: const EdgeInsets.only(top: 681),
-                        child: Energylimit()),
+                        child: Electricity()),
                     Padding(
                         padding: EdgeInsets.only(
                             top: 940,
                             left: 0.23 * MediaQuery.of(context).size.width),
-                        child: GlassView()),
+                        child: IconView()),
                     getAppBarUI(),
                     SizedBox(
                       height: MediaQuery.of(context).padding.bottom,
@@ -270,7 +271,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
     ]);
   }
 
-  Widget powerview() {
+  Widget PowerView() {
     return Container(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
       child: Container(
@@ -501,7 +502,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
                                   ],
                                   //The maxmium active power is estimated as around 10 W. Tne responsive circle is 360 degree and is then divided into 10 portions (36 degrees each):
 
-                                  angle: (360 / 36 * Power).toDouble()),
+                                  angle: (360 / 10 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,
@@ -532,7 +533,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
     );
   }
 
-  Widget Energyoverall() {
+  Widget EnergyConsumption() {
     return Container(
       child: Padding(
         padding:
@@ -781,7 +782,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
     );
   }
 
-  Widget Energylimit() {
+  Widget Electricity() {
     return Container(
       child: Padding(
         padding:

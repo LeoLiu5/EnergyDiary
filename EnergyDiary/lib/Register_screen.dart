@@ -35,7 +35,35 @@ class _registrationPageState extends State<registrationPage> {
             const SizedBox(height: 90),
             buildLoginButton(context), // register button
             const SizedBox(height: 90),
+            buildGobackButton(context), // register button
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildGobackButton(BuildContext context) {
+    return Align(
+      child: SizedBox(
+        height: 45,
+        width: 270,
+        child: ElevatedButton(
+          style: ButtonStyle(
+              // circular corner
+              shape: MaterialStateProperty.all(const StadiumBorder(
+                  side: BorderSide(style: BorderStyle.none)))),
+          child: Text('Go back',
+              style: Theme.of(context).primaryTextTheme.headlineSmall),
+          onPressed: () async {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => const loginPage(title: "Log in")));
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Back to the login page"),
+              ),
+            );
+          },
         ),
       ),
     );

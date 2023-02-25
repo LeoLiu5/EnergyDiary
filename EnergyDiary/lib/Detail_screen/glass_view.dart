@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../app_theme.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class GlassView extends StatelessWidget {
+class IconView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +59,7 @@ class GlassView extends StatelessWidget {
                   child: SizedBox(
                     width: 40,
                     height: 40,
-                    child: Image.asset("assets/app/glass.png"),
+                    child: Image.asset("assets/app/icon.png"),
                   ),
                 )
               ],

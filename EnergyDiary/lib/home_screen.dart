@@ -91,15 +91,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         ),
                         //GridView space formatting:
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: multiple
-                              ? 2
-                              : 1, //The number of children in the cross axis.
-                          mainAxisSpacing:
-                              30.0, //The number of logical pixels between each child along the main axis.
-                          crossAxisSpacing:
-                              25, //The number of logical pixels between each child along the cross axis.
-                          childAspectRatio:
-                              0.6, //→ double The ratio of the cross-axis to the main-axis extent of each child.
+                          //The number of children (images) in the cross axis or in a row:
+                          crossAxisCount: multiple ? 2 : 1,
+                          //The number of logical pixels between each child along the main axis:
+                          mainAxisSpacing: 30.0,
+                          //The number of logical pixels between each child along the cross axis:
+                          crossAxisSpacing: 25,
+                          //→ double The ratio of the cross-axis to the main-axis extent of each child:
+                          childAspectRatio: 0.6,
                         ),
                       );
                     },
@@ -113,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       width: 110,
                       child: ElevatedButton(
                         style: ButtonStyle(
-                            // 设置圆角
+                            // Circular corner
                             shape: MaterialStateProperty.all(
                                 const StadiumBorder(
                                     side:
@@ -188,6 +187,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               color: isLightMode ? Colors.white : AppTheme.nearlyBlack,
               child: Material(
                 color: Colors.transparent,
+                //This inkwell allows users to transform the view or the display of the home page
                 child: InkWell(
                   borderRadius:
                       BorderRadius.circular(AppBar().preferredSize.height),
@@ -271,7 +271,7 @@ class HomeListView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    //Transparent inkwell allows user to click on the images and moves to other pages
+                    //This transparent inkwell allows user to click on the images and moves to other pages:
                     Material(
                       color: Colors.transparent,
                       child: InkWell(

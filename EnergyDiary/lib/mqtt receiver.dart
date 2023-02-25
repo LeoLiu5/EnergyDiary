@@ -1,7 +1,7 @@
 import 'package:mqtt_client/mqtt_server_client.dart';
 
-const String username = '';
-const String password = '';
+const String username = 'student';
+const String password = 'ce2021-mqtt-forget-whale';
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
 
 double Today = 1.0;
@@ -64,14 +64,14 @@ class User {
   }
 }
 
-class Tutorial {
+class Convert {
   final String Time;
   final User ENERGY;
 
-  Tutorial(this.Time, this.ENERGY);
+  Convert(this.Time, this.ENERGY);
 
-  factory Tutorial.fromJson(dynamic json) {
-    return Tutorial(json['Time'] as String, User.fromJson(json['ENERGY']));
+  factory Convert.fromJson(dynamic json) {
+    return Convert(json['Time'] as String, User.fromJson(json['ENERGY']));
   }
 
   @override

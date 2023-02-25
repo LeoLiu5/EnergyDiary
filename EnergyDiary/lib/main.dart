@@ -13,12 +13,12 @@ import 'firebase_options.dart';
 
 //Prevent device orientation changes and force portrait up and down
 main() async {
-  //Global loading screen
+  //Setting the Global loading screen using the "screen_loader" library
   configScreenLoader(
     loader: AlertDialog(
       title: Text('Connecting to MQTT...'),
     ),
-    bgBlur: 20.0,
+    bgBlur: 20.0, //Background blur
   );
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
