@@ -500,9 +500,9 @@ class _printer3State extends State<printer3> with ScreenLoader {
                                     HexColor("#8A98E8"),
                                     HexColor("#8A98E8")
                                   ],
-                                  //The maxmium active power is estimated as around 10 W. Tne responsive circle is 360 degree and is then divided into 10 portions (36 degrees each):
+                                  //The maximum active power is estimated as around 120 W. Tne responsive circle is 360 degree and is then divided into 120 portions (3 degrees each):
 
-                                  angle: (360 / 10 * Power).toDouble()),
+                                  angle: (360 / 120 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,
