@@ -5,9 +5,7 @@ import 'package:screen_loader/screen_loader.dart';
 import 'dart:convert';
 import 'Capsule_wave_view.dart';
 import 'glass_view.dart';
-
 import '../mqtt receiver.dart';
-
 import '../app_theme.dart';
 
 class screen2 extends StatefulWidget {
@@ -500,8 +498,8 @@ class _screen2State extends State<screen2> with ScreenLoader {
                                     HexColor("#8A98E8"),
                                     HexColor("#8A98E8")
                                   ],
-                                  //The maxmium active power is estimated as 36 W. Tne responsive circle is 360 degree and is then divided into 10 portions (36 degrees each):
-                                  angle: (360 / 36 * Power).toDouble()),
+                                  //The maxmium active power is estimated as 360 W. Tne responsive circle is 360 degree and is then divided into 360 portions (1 degrees each):
+                                  angle: (360 / 360 * Power).toDouble()),
                               child: SizedBox(
                                 width: 108,
                                 height: 108,

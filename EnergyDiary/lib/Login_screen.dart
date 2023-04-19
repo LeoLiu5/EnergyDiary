@@ -18,7 +18,7 @@ class AuthService {
       return 'Success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        return 'The password provided is too weak.';
+        return 'Please create a password for your account.';
       } else if (e.code == 'email-already-in-use') {
         return 'The account already exists for that email.';
       } else {

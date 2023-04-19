@@ -5,7 +5,6 @@ import 'dart:io'
     show
         Platform; //Information about the environment in which the current program is running.
 import 'package:flutter/foundation.dart' show kIsWeb; // running on the web!
-
 import 'package:screen_loader/screen_loader.dart';
 // importing firebase libraries
 import 'package:firebase_core/firebase_core.dart';

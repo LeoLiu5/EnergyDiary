@@ -5,9 +5,7 @@ import 'package:screen_loader/screen_loader.dart';
 import 'dart:convert';
 import 'Capsule_wave_view.dart';
 import 'glass_view.dart';
-
 import '../mqtt receiver.dart';
-
 import '../app_theme.dart';
 
 class printer2 extends StatefulWidget {
