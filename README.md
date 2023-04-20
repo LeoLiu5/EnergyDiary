@@ -1,24 +1,62 @@
 # Energy Diary - Monitoring daily Energy Usage in CE Lab
 
-Energy Diary can connect to your local MQTT server and collect your energy usage data. Compared to MQTT, Energy Diary will present everything in an easy-to-understand, attractive, and interactive form. 
-The expected function of this smart energy app is to help the user track down their daily electricity and energy consumption. This application also has the potential to help users reduce their carbon footprint by connecting electricity and power usage data to mobile devices.
+In the CE lab located in UCL East, various electronic devices have been implemented for teaching and researching purposes. Energy Diary connects to the CE MQTT server and displays real-time energy usage data for these electronic devices, including two Samsung screens, four Prusa printers, and the soldering station. 
+
+Instead of directly reading JSON formatted data strings from MQTT, Energy Diary presents energy data in an easy-to-understand, attractive, and interactive form.
+
+The goal is to help the lab technician, staff, or students track daily electricity and energy consumption. This application also has the potential to help users reduce their carbon footprint by reminding them of their electricity and power consumption.
 
 
 ## Features
 
-- A welcome user interface (an overview menu of the app)
-- <img width="300" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/HomePage.png"><img width="300" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/HomeDraft.png">
-  - A detail page for Peter, Prusa MMU2S Multi-Filament Printer 1
-  - A detail page for Pertuina, Prusa MMU2S Single-Filament Printer 2
-  - A detail page for Paul, Prusa MMU2S Single-Filament Printer 3
-  - A detail page for Penelope, Prusa MMU2S Multi-Filament Printer 4
-  - A detail page for Sally, Samsung Screen 1
-  - A detail page for Sammy, Samsung Screen 2
-  - A detail page for Sandy, the Soldering Station
-  - <img width="300" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/DataDraft.png">
+- When users open the App, they will be introduced to a login page: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Login.png">
+
+- If the user does not have an account, they need to click on "Register here" and create an account. Users can switch between the login and the sign-up page freely by clicking the "go back" button: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Sign%20up.png">
+
+- On the sign-up page, users can enter their email addresses and create a password for their accounts. If the email has been used before, a notification message will appear below to remind the user that the account has already been created: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/existing%20account.png">
+  
+
+- If the user forgets to enter a password or the password is too short, a notification message will appear below to ask the user to create a new password: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/no%20password.png">       <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/weak%20password.png">
+ 
+- If the email address is invalid, a notification message will appear below to ask the user to enter a correct email address:
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/invalid%20eamil.png">
+ 
+
+
+ 
+- After users signed up, they will be returned to the login page. Now users can log in to their just-created accounts. After clicking the "log in" button, users will be directed to the welcome page: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Welcome%20page.png">
+  
+- Users can change the displaying pattern by clicking the icon at the top right corner: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Change%20view.png">
+
+- By clicking on one of the images, users will be directed to the corresponding electronic device's information page. However, users have to wait until the application connects to the CE MQTT server: 
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Connecting%20to%20MQTT.png">
+  
+
+- After successfully connecting to the CE MQTT server, energy data for this electronic device will be displayed on its unique information page:  
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/information%20page.png">
+
+- Each information page contains:
    - A "Power Consumption" section: showing information on "Active Power (the power which is consumed or utilized in an AC circuit)", "Reactive Power (the power associated with Inductors and Capacitors of the circuit)", and "Apparent Power (the combination of Active Power and Reactive Power)"
    - An "Energy Usage" section: showing information on "Total Energy Consumption", "Today's Energy Consumption", "Yesterday’s Energy Consumption", and "Change in Energy Consumption"
    - An "⚡️ Electricity" section: showing information on "Voltage" and "Current"
+   
+- There is an information page for each of the following electronic devices from the CE lab:  
+  - Peter, Prusa MMU2S Multi-Filament Printer 1
+  - Pertuina, Prusa MMU2S Single-Filament Printer 2
+  - Paul, Prusa MMU2S Single-Filament Printer 3
+  - Penelope, Prusa MMU2S Multi-Filament Printer 4
+  - Sally, Samsung Screen 1
+  - Sammy, Samsung Screen 2
+  - Sandy, the Soldering Station
+
+
+
       
       
 ## Data Feed
@@ -90,9 +128,32 @@ Below is a list of links to resources and tutorials that helped in the developme
 - https://medium.com/google-developer-experts/firebase-authentication-flutter-80e8f00338ac
 
 
-## Include A Section That Tells Developers How To Install The App
+## How To Install The App
 
-Include a section that gives instructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
+
+
+
+1. For developers who want to refine or extend the App, please download [the files](https://github.com/LeoLiu5/EnergyDiary/tree/main/EnergyDiary) and open them in Android Studio or Visual Studio Code. 
+
+2. Please install [Flutter](https://github.com/flutter/flutter) and IOS Simulator or run the app using Android Emulator from Android Studio. 
+
+3. The App uses multiple Packages and Libraries as highlighted above. They can be installed through the terminal or manually added to Flutter dependencies.
+
+4. Enter your MQTT client username and password in the "mqtt receiver.dart" file.
+
+5. The App uses the Firebase Authentication service. Please create a Firebase project and register your App on Firebase by providing your ```applicationID``` in ```android>app>build.grade``` for Android devices. After registration, download the "google-services.json" configuration file and implement it in the Android app module root directory. To set up Firebase in your Flutter App, please refer to [here](https://firebase.google.com/docs/flutter/setup?platform=android).
+
+
+## License
+MIT License
+
+Copyright (c) Leo Liu liuxiaochen11@gmail.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ##  Contact Details
