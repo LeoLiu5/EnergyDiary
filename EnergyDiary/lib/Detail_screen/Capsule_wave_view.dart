@@ -13,8 +13,8 @@ class WaveView extends StatefulWidget {
 
 class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
   AnimationController? waveAnimationController;
-  Offset bottleOffset1 = Offset(0, 0);
-  List<Offset> animList1 = [];
+  Offset bottleOffset = Offset(0, 0);
+  List<Offset> animList = [];
 
   @override
   void initState() {
@@ -29,16 +29,17 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
         }
       });
     waveAnimationController!.addListener(() {
-      animList1.clear();
-      //The maximum length of the bottle is 60 logical pixels, the wave moves from 0 to 60 logical pixels
-      for (int i = bottleOffset1.dx.toInt(); i <= 60; i++) {
-        animList1.add(
+      animList.clear();
+      //The maximum length of the bottle is 60 logical pixels,
+      // the wave moves from 0 to 60 logical pixels
+      for (int i = bottleOffset.dx.toInt(); i <= 60; i++) {
+        animList.add(
           new Offset(
             //Length: From 0 to 60 logical pixels horizontally
-            i.toDouble() + bottleOffset1.dx.toInt(),
+            i.toDouble() + bottleOffset.dx.toInt(),
             //During the given duration: waveAnimationController!.value linearly
             //produces values that range from 0.0 to 1.0. The frequency of the
-            //sine wave can be incresed by increasing the multiplier of i.
+            //sine wave can be increased by increasing the multiplier of i.
             math.sin((waveAnimationController!.value * 360 + 15 * i) %
                         360 *
                         //const double degrees2Radians = math.pi / 180.0;
@@ -46,7 +47,7 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
                         vector.degrees2Radians) *
                     //Wave amplitude:
                     3 +
-//the equalibrium point and the maximum height of the bottle is 160 logical pixels
+//the equilibrium point and the maximum height of the bottle is 160 logical pixels
                 ((100 - widget.percentageValue) * 160 / 100),
           ),
         );
@@ -94,7 +95,7 @@ class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
                 ),
               ),
               clipper:
-                  new WaveClipper(waveAnimationController!.value, animList1),
+                  new WaveClipper(waveAnimationController!.value, animList),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 48),

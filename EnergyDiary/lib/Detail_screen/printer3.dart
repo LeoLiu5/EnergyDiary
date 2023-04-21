@@ -1019,7 +1019,7 @@ class _printer3State extends State<printer3> with ScreenLoader {
                       ],
                     ),
                     child: WaveView(
-                      percentageValue: Voltage / 253 * 100,
+                      percentageValue: (Voltage-216.2) / 36.8 * 100,
                     ),
                   ),
                 )
