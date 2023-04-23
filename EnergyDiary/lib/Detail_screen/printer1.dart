@@ -7,6 +7,10 @@ import 'Capsule_wave_view.dart';
 import 'glass_view.dart';
 import '../mqtt receiver.dart';
 import '../app_theme.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
 
 class printer1 extends StatefulWidget {
   @override
@@ -19,6 +23,7 @@ class _printer1State extends State<printer1> with ScreenLoader {
   @override
   void initState() {
     startMQTT();
+
     super.initState();
   }
 
@@ -62,6 +67,7 @@ class _printer1State extends State<printer1> with ScreenLoader {
     const topic1 = 'UCL/OPS/107/EM/gosund/peter-the-prusa-1/SENSOR';
     client.subscribe(topic1, MqttQos.atMostOnce);
 
+
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
       final receivedMessage = c![0].payload as MqttPublishMessage;
       final messageString = MqttPublishPayload.bytesToStringAsString(
@@ -82,9 +88,16 @@ class _printer1State extends State<printer1> with ScreenLoader {
             convert.ENERGY.ReactivePower,
             convert.ENERGY.Voltage,
             convert.ENERGY.Current);
+
+
       }
+
       stopLoading(); //Function from the "screen_loader" library, Closing the Loading screen after the mqtt data is updated
+      add(context);
     });
+
+
+
   }
 
   @override
@@ -155,10 +168,15 @@ class _printer1State extends State<printer1> with ScreenLoader {
                 tooltip: 'Refresh this Page',
                 autofocus: true,
                 onPressed: startMQTT,
+                // onPressed:() => add(context),
+
                 child: Icon(Icons.refresh),
               ),
             )));
   }
+
+
+
 
   Widget getAppBarUI() {
     return Column(children: <Widget>[
@@ -1033,5 +1051,49 @@ class _printer1State extends State<printer1> with ScreenLoader {
         ),
       ),
     );
+  }
+}
+
+void add(BuildContext context) async {
+  // get the document snapshot for today's date from the 'Date' collection
+  DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('Date').doc('${Time.substring(0, 10)}').get();
+
+  // if the document does not exist
+  if (!snapshot.exists) {
+    try {
+      print('Add data: $Today');
+      // create a new document with an empty object
+      await FirebaseFirestore.instance
+          .collection('Date')
+          .doc(Time.substring(0, 10))
+          .set({});
+    } catch (e) {
+      // show a snackbar with an error message
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Could not record current energy consumption $e'),
+      ));
+      print('Error recording: $e');
+    }
+  }
+
+  try {
+    print('Add data: $Today');
+    // update the 'Printer1' field in the document with the current time
+    await FirebaseFirestore.instance
+        .collection('Date')
+        .doc('${Time.substring(0, 10)}')
+        .update({
+      'Printer1':Today,
+    });
+    // show a snackbar with a success message
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Recorded current energy consumption'),
+    ));
+  } catch (e) {
+    // show a snackbar with an error message
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Could not record current energy consumption $e'),
+    ));
+    print('Error recording: $e');
   }
 }

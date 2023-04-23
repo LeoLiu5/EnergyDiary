@@ -7,7 +7,50 @@ import 'Capsule_wave_view.dart';
 import 'glass_view.dart';
 import '../mqtt receiver.dart';
 import '../app_theme.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+void add(BuildContext context) async {
+  // get the document snapshot for today's date from the 'Date' collection
+  DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('Date').doc('${Time.substring(0, 10)}').get();
 
+  // if the document does not exist
+  if (!snapshot.exists) {
+    try {
+      print('Add data: $Today');
+      // create a new document with an empty object
+      await FirebaseFirestore.instance
+          .collection('Date')
+          .doc(Time.substring(0, 10))
+          .set({});
+    } catch (e) {
+      // show a snackbar with an error message
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Could not record current energy consumption $e'),
+      ));
+      print('Error recording: $e');
+    }
+  }
+
+  try {
+    print('Add data: $Today');
+    // update the 'Screen2' field in the document with the current time
+    await FirebaseFirestore.instance
+        .collection('Date')
+        .doc('${Time.substring(0, 10)}')
+        .update({
+      'Screen2':Today,
+    });
+    // show a snackbar with a success message
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Recorded current energy consumption'),
+    ));
+  } catch (e) {
+    // show a snackbar with an error message
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Could not record current energy consumption $e'),
+    ));
+    print('Error recording: $e');
+  }
+}
 class screen2 extends StatefulWidget {
   @override
   _screen2State createState() => _screen2State();
@@ -18,6 +61,7 @@ class _screen2State extends State<screen2> with ScreenLoader {
   @override
   void initState() {
     startMQTT();
+
     super.initState();
   }
 
@@ -83,6 +127,7 @@ class _screen2State extends State<screen2> with ScreenLoader {
             convert.ENERGY.Current);
       }
       stopLoading();
+      add(context);
     });
   }
 

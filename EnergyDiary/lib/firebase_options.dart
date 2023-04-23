@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '842250017294',
     projectId: 'energy-diary-5df98',
     authDomain: 'energy-diary-5df98.firebaseapp.com',
+    databaseURL: 'https://energy-diary-5df98-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'energy-diary-5df98.appspot.com',
     measurementId: 'G-FNXJDMZQ3X',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:842250017294:android:c82cc3aa0b50bbb2c4fa5f',
     messagingSenderId: '842250017294',
     projectId: 'energy-diary-5df98',
+    databaseURL: 'https://energy-diary-5df98-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'energy-diary-5df98.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:842250017294:ios:2dc7c16488fe064ec4fa5f',
     messagingSenderId: '842250017294',
     projectId: 'energy-diary-5df98',
+    databaseURL: 'https://energy-diary-5df98-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'energy-diary-5df98.appspot.com',
     androidClientId: '842250017294-tce629a0qha3c9amp5s4rn7fjrhu8f9p.apps.googleusercontent.com',
     iosClientId: '842250017294-melimcvo99mj67eq249rjg1jpi826bg1.apps.googleusercontent.com',
@@ -77,6 +80,7 @@ class DefaultFirebaseOptions {
     appId: '1:842250017294:ios:c7e026be943e5864c4fa5f',
     messagingSenderId: '842250017294',
     projectId: 'energy-diary-5df98',
+    databaseURL: 'https://energy-diary-5df98-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'energy-diary-5df98.appspot.com',
     androidClientId: '842250017294-tce629a0qha3c9amp5s4rn7fjrhu8f9p.apps.googleusercontent.com',
     iosClientId: '842250017294-vt4rtutgmnvu2rg75sfj521de1tk8l54.apps.googleusercontent.com',

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'Login_screen.dart';
 import 'package:flutter/services.dart';
-import 'dart:io'
-    show
-        Platform; //Information about the environment in which the current program is running.
+import 'dart:io' show Platform; //Information about the environment in which the current program is running.
 import 'package:flutter/foundation.dart' show kIsWeb; // running on the web!
 import 'package:screen_loader/screen_loader.dart';
 // importing firebase libraries
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 //Prevent device orientation changes and force portrait up and down
 main() async {
   //Setting the Global loading screen using the "screen_loader" library
@@ -21,8 +19,11 @@ main() async {
   );
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: 'Energy-Diary',
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).whenComplete(() {
+    print("completedAppInitialize");
+  });
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
