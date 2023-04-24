@@ -8,6 +8,10 @@ import 'glass_view.dart';
 import '../mqtt receiver.dart';
 import '../app_theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'Graph.dart';
+import 'printer1.dart';
+import 'printer3.dart';
+import 'package:EnergyDiary/home_screen.dart';
 void add(BuildContext context) async {
   // get the document snapshot for today's date from the 'Date' collection
   DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('Date').doc('${Time.substring(0, 10)}').get();
@@ -147,6 +151,7 @@ class _printer2State extends State<printer2> with ScreenLoader {
             child: Scaffold(
               backgroundColor: Colors.transparent,
               body: SingleChildScrollView(
+                //Allow this page to be scrolled
                 child: Stack(
                   children: <Widget>[
                     Padding(
@@ -164,24 +169,37 @@ class _printer2State extends State<printer2> with ScreenLoader {
                           top: 418,
                         ),
                         child: TitleView(
-                          titleTxt: 'Energy Consumption',
+                          titleTxt: 'Electricity Status',
                         )),
                     Padding(
                         padding: const EdgeInsets.only(top: 435),
+                        child: Electricity()),
+                    Padding(
+                        padding: const EdgeInsets.only(
+                          top: 691,
+                        ),
+                        child: TitleView(
+                          titleTxt: 'Energy Consumption',
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 709),
                         child: EnergyConsumption()),
                     Padding(
                         padding: const EdgeInsets.only(
-                          top: 662,
+                          top: 935,
                         ),
                         child: TitleView(
-                          titleTxt: 'Electricity',
+                          titleTxt: 'Energy Graph',
                         )),
                     Padding(
-                        padding: const EdgeInsets.only(top: 681),
-                        child: Electricity()),
+                        padding: EdgeInsets.only(
+                          top: 955,
+                          // left: 0.23 * MediaQuery.of(context).size.width
+                        ),
+                        child: SingleDeviceGraph(device:'Printer2')),
                     Padding(
                         padding: EdgeInsets.only(
-                            top: 940,
+                            top: 1420,
                             left: 0.23 * MediaQuery.of(context).size.width),
                         child: IconView()),
                     getAppBarUI(),
@@ -193,13 +211,42 @@ class _printer2State extends State<printer2> with ScreenLoader {
               ),
               // The Refresh floating button
               floatingActionButtonLocation:
-                  FloatingActionButtonLocation.endContained,
-              floatingActionButton: FloatingActionButton(
-                focusColor: Colors.green,
-                tooltip: 'Refresh this Page',
-                autofocus: true,
-                onPressed: startMQTT,
-                child: Icon(Icons.refresh),
+              FloatingActionButtonLocation.endContained,
+              floatingActionButton: Stack(
+                children: [
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: FloatingActionButton(
+                      heroTag: null,
+                      focusColor: Colors.green,
+                      autofocus: true,
+                      tooltip: 'Go back to the home page',
+                      onPressed: () {              Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const MyHomePage(),
+                        ),
+                      );
+                        // Do something
+                      },
+                      child: Icon(Icons.home),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 80,
+                    right: 0,
+                    child:  FloatingActionButton(
+                      heroTag: null,
+                      focusColor: Colors.green,
+                      tooltip: 'Refresh this Page',
+                      autofocus: true,
+                      onPressed: startMQTT,
+                      // onPressed:() => add(context),
+
+                      child: Icon(Icons.refresh),
+                    ),
+                  ),
+                ],
               ),
             )));
   }
@@ -252,7 +299,15 @@ class _printer2State extends State<printer2> with ScreenLoader {
                       highlightColor: Colors.transparent,
                       borderRadius:
                           const BorderRadius.all(Radius.circular(32.0)),
-                      onTap: () {},
+                      onTap: () {
+                        client.disconnect(); print("client disconnected");
+                        Navigator.push<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (BuildContext context) =>
+                              printer1(),
+                        ),
+                      );},
                       child: Center(
                         child: Icon(
                           Icons.keyboard_arrow_left,
@@ -297,7 +352,15 @@ class _printer2State extends State<printer2> with ScreenLoader {
                       highlightColor: Colors.transparent,
                       borderRadius:
                           const BorderRadius.all(Radius.circular(32.0)),
-                      onTap: () {},
+                      onTap: () {
+                        client.disconnect(); print("client disconnected");
+                        Navigator.push<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (BuildContext context) =>
+                              printer3(),
+                        ),
+                      );},
                       child: Center(
                         child: Icon(
                           Icons.keyboard_arrow_right,

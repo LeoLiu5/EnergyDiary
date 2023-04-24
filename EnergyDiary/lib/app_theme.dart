@@ -19,7 +19,7 @@ class AppTheme {
 class TitleView extends StatelessWidget {
   final String titleTxt;
 
-  const TitleView({Key? key, this.titleTxt: ""}) : super(key: key);
+  const TitleView({Key? key, this.titleTxt = ""}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

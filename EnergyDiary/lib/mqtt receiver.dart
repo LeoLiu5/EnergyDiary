@@ -1,7 +1,7 @@
 import 'package:mqtt_client/mqtt_server_client.dart';
 
 const String username = 'student';
-const String password = '';
+const String password = 'ce2021-mqtt-forget-whale';
 final client = MqttServerClient('mqtt.cetools.org', 'LeoLiu');
 
 double Today = 1.0;
