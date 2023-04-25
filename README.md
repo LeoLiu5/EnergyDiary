@@ -39,12 +39,13 @@ The goal is to help the lab technician, staff, or students track daily electrici
   
 
 - After successfully connecting to the CE MQTT server, energy data for this electronic device will be displayed on its unique information page:  
-  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/information%20page.png">
+  - <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Information_page1.png">   <img width="200" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/Information_page2.png">
 
 - Each information page contains:
    - A "Power Consumption" section: showing information on "Active Power (the power which is consumed or utilized in an AC circuit)", "Reactive Power (the power associated with Inductors and Capacitors of the circuit)", and "Apparent Power (the combination of Active Power and Reactive Power)"
    - An "Energy Usage" section: showing information on "Total Energy Consumption", "Today's Energy Consumption", "Yesterday’s Energy Consumption", and "Change in Energy Consumption"
    - An "⚡️ Electricity" section: showing information on "Voltage" and "Current"
+   - A "⚡️ Graph" section: displaying daily energy usage on a line chart
    
 - There is an information page for each of the following electronic devices from the CE lab:  
   - Peter, Prusa MMU2S Multi-Filament Printer 1
@@ -76,6 +77,9 @@ Used for the purpose of authentication users, links with firebase within Google 
 
 - [**firebase_core 2.6.1**](https://pub.dev/packages/firebase_core/example)  
 A Flutter plugin to use the Firebase Core API, which enables connecting to multiple Firebase apps
+
+- [**cloud_firestore: ^4.5.2**](https://pub.dev/packages/firebase_core/example)  
+A Flutter plugin to use the Cloud Firestore API.
 
 - [**hexcolor 3.0.1**](https://pub.dev/packages/hexcolor)  
 Used in converting material colors to hex colors.
@@ -111,6 +115,8 @@ Providing encoders and decoders for converting JSON data fetched from MQTT.
 - [**screen_loader 4.0.1**](https://pub.dev/packages/screen_loader)  
 Providing easy to use mixin ScreenLoader, which will handle the loading on the screen without using state or navigation stack. 
 
+- [**syncfusion_flutter_charts: ^21.1.41**](https://pub.dev/packages/syncfusion_flutter_charts)
+Creating various types of cartesian, circular and spark charts with seamless interaction, responsiveness, and smooth animation. It has a rich set of features, and it is completely customizable and extendable.
 
 ## Helpful Resources and Tutorials 
 
