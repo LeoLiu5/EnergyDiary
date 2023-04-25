@@ -60,16 +60,21 @@ The goal is to help the lab technician, staff, or students track daily electrici
 
       
       
-## Data Feed
+## Data Feed and Database
 
 - [Three GOSUND Smart Plugs](https://www.amazon.co.uk/Google-Control-Monitoring-Function-Required/dp/B0983HNB7M/ref=asc_df_B0983HNB7M/?tag=googshopuk-21&linkCode=df0&hvadid=535047026873&hvpos=&hvnetw=g&hvrand=7351062071157182144&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9044962&hvtargid=pla-1393506937628&psc=1&th=1&psc=1) are implemented around the CE Lab. They are responsible for collecting the energy data and publishing them to the CE MQTT Server. 
 
-<img width="400" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/mqtt.png">
+<img width="400" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/GOSUND.png">
 
 - Then, the CE MQTT Server provides the energy data directly to Energy Diary.
 
 <img width="400" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/mqtt.png">
 
+- In addition, the backend of the app connects to Cloud Firestore and pushes the energy consumption data directly to the collection called "Date".
+
+<img width="700" alt="image" src="https://github.com/LeoLiu5/EnergyDiary/blob/main/EnergyDiary/assets/cloud%20firestore.png">
+
+- Finally, the app fetches energy consumption data based on the specific date and electronic device. The "monthly energy usage" graphs from the information pages are generated using the fetched data from Cloud Firestore.
 
 ## Key Packages and Libraries Used
 - [**firebase_auth 4.2.6**](https://pub.dev/packages/firebase_auth)  
