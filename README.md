@@ -57,9 +57,13 @@ The goal is to help the lab technician, staff, or students track daily electrici
   - Sandy, the Soldering Station
 
 
-## Demo:
+## Demo Videos:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/aZHMp5tJoS4/0.jpg)](https://youtu.be/aZHMp5tJoS4)
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ffELl5H_1vw/0.jpg)](https://youtu.be/ffELl5H_1vw)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/VJhp0Hv6mcY/0.jpg)](https://youtu.be/VJhp0Hv6mcY)
       
       
 ## Data Feed and Database
