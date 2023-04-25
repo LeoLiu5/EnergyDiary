@@ -138,9 +138,11 @@ class _loginPageState extends State<loginPage> {
               password: _password.text,
             );
             if (message!.contains('Success')) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const MyHomePage(),
+              Navigator.push<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) =>
+                  const MyHomePage(),
                 ),
               );
             }
@@ -163,6 +165,7 @@ class _loginPageState extends State<loginPage> {
           if (v!.isEmpty) {
             return 'Please enter your password';
           }
+          return null;
         },
         decoration: InputDecoration(
             labelText: "Password",
@@ -192,6 +195,7 @@ class _loginPageState extends State<loginPage> {
         if (!emailReg.hasMatch(v!)) {
           return 'Please enter a correct email address';
         }
+        return null;
       },
       controller: _email,
     );

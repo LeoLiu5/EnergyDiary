@@ -109,6 +109,7 @@ class _registrationPageState extends State<registrationPage> {
           if (v!.isEmpty) {
             return 'Please enter your password';
           }
+          return null;
         },
         decoration: InputDecoration(
             labelText: "Password",
@@ -138,6 +139,7 @@ class _registrationPageState extends State<registrationPage> {
         if (!emailReg.hasMatch(v!)) {
           return 'Please enter a correct email address';
         }
+        return null;
       },
       controller: _email,
     );

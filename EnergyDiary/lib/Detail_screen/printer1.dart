@@ -269,13 +269,7 @@ class _printer1State extends State<printer1> with ScreenLoader {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(32.0)),
                       onTap:     () {client.disconnect(); print("client disconnected");
-    Navigator.push<dynamic>(
-    context,
-    MaterialPageRoute<dynamic>(
-    builder: (BuildContext context) =>
-    SolderStation(),
-    ),
-    );
+
     },
                       child: Center(
                         child: Icon(

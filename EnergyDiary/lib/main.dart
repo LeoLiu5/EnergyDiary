@@ -7,7 +7,6 @@ import 'package:screen_loader/screen_loader.dart';
 // importing firebase libraries
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:firebase_database/firebase_database.dart';
 //Prevent device orientation changes and force portrait up and down
 main() async {
   //Setting the Global loading screen using the "screen_loader" library
